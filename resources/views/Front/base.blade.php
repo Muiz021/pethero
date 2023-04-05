@@ -23,6 +23,10 @@
     @include('Front.partials.footer')
     {{-- end footer --}}
 
+    {{-- navbar --}}
+    @include('Front.partials.navbar')
+    {{-- end navbar --}}
+
     @include('Front.partials.script')
     @stack('script')
 </body>

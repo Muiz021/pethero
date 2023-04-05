@@ -1,8 +1,13 @@
 body{
     padding: 0;
     margin: 0;
+    color: #fff;
 }
 
+.container {
+    width: 500px;
+    padding: 0;
+}
 
 /*header*/
 header{
@@ -10,10 +15,146 @@ header{
     height: 80px;
     background-color: #F2B2B2;
 }
+/* end header */
 
-header .container{
-    width: 500px;
+
+/* home */
+
+#hero .container{
+    background-color: #F8EDEC;
 }
 
+#hero .text-atas{
+    position: relative;
+    bottom: 150px;
+    margin-left: 15px;
+}
 
-/* end header */
+#hero .text-atas .text-satu{
+    color: #C1132F;
+    font-size: 30px;
+    font-weight: 700;
+
+}
+
+#hero .text-atas .text-dua{
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#hero .carousel-inner{
+    position: relative;
+    bottom: 100px;
+    padding: 0 30px;
+}
+
+#hero .carousel-indicators button{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: relative;
+    bottom: 100px;
+}
+
+#hero .partial{
+    position: relative;
+    bottom: 30px;
+}
+/* end home */
+
+/* menu */
+
+#menu .container{
+    background-color: #F8EDEC;
+}
+
+#menu .text-tengah .text-satu{
+    color: #C1132F;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+#menu .text-tengah .text-dua{
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#menu .text-tengah h3{
+    margin-left: 15px;
+}
+
+#menu .text-tengah .deskripsi{
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: justify;
+    padding: 0 15px;
+}
+
+#menu .daftar-menu a{
+    width: 200px;
+}
+/* end menu */
+
+/* footer */
+#footer .container{
+    background-color: #F8EDEC;
+    height: 50vh;
+}
+
+#footer .logo{
+    margin: 0 20px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+
+#footer .sosial-media{
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+#footer .sosial-media a{
+    margin: 0 10px;
+    background-color: #C1132F;
+    border: 8px solid #C1132F;
+    border-radius: 50%;
+}
+
+#footer .sosial-media a svg{
+    color: #FFF;
+}
+
+#footer .text-bawah{
+    padding-left: 20px;
+    margin-top: 40px;
+}
+#footer .text-bawah .text-satu{
+    color: #C1132F;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+#footer .text-bawah .text-dua,.text-tiga{
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#navbar .container{
+    background-color: #FFF;
+    box-shadow:  0px .5px 2px 1px #cccccc inset;
+}
+
+#navbar .navbar a{
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#navbar .navbar .active{
+    color:#C1132F;
+}
+/* end footer */
