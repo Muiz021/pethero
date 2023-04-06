@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col mx-auto">
-                    <div class="navbar mt-3 px-3">
+                    <div class="navbar mt-3 px-4">
                         <a href="#" class="text-center nav-item active">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                                 class="bi bi-house-door-fill" viewBox="0 0 16 16">
