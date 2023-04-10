@@ -1,0 +1,88 @@
+#hero .text-atas-kirim-hewan {
+    background-image: url('../img/hero/hero-2.png');
+    background-size: cover;
+    height: 400px;
+    margin-top: 80px;
+    padding-top: 70px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: justify;
+}
+
+#hero .text-atas-kirim-hewan h2 {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+#hero .text-atas-kirim-hewan p {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#detail-kirim-hewan .container {
+    background-color: #F8EDEC;
+}
+
+#detail-kirim-hewan .container h2 {
+    color: #000;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    padding-top: 30px;
+}
+
+#detail-kirim-hewan .btn {
+    height: 46px;
+    width: 280px;
+    border-radius: 25px;
+}
+
+#detail-kirim-hewan-2 .container {
+    background-color: #F8EDEC;
+}
+
+#detail-kirim-hewan-2 h2 {
+    color: #000;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+#detail-kirim-hewan-2 .text-estimasi {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+#detail-kirim-hewan-2 .form-estimasi {
+    width: 142px;
+    border: #CF203F solid 2px;
+    border-radius: 5px;
+}
+
+#detail-kirim-hewan-2 button {
+    margin-top: 30px;
+    background-color: #CF203F;
+    width: 87px;
+    height: 48px;
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #FFF;
+}
+
+#detail-kirim-hewan-2 .tambah-lokasi {
+    text-decoration: none;
+}
+
+#detail-kirim-hewan-2 .tambah-lokasi svg {
+    background-color: #CF203F;
+    color: #FFF;
+    border-radius: 50%;
+}
+
+#detail-kirim-hewan-2 .tambah-lokasi p {
+    /* font-size: 15px; */
+    font-weight: 500;
+    color: #000;
+}

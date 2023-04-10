@@ -62,7 +62,7 @@
         <div class="daftar-menu">
             <div class="d-flex justify-content-center">
                 <div class="d-flex flex-column">
-                    <a href="#" class="my-2">
+                    <a href="{{route('front.kirim-hewan1')}}" class="my-2">
                         <img src="{{ asset('img/menu/menu-1.png') }}" width="100%" alt="">
                     </a>
                     <a href="#" class="my-2">
