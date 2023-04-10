@@ -1,0 +1,150 @@
+/* akun-hero */
+#akun-hero {
+    margin-top: 80px;
+}
+
+#akun-hero .container {
+    background-color: #F8EDEC;
+}
+
+#akun-hero .text-atas .text-satu {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #000;
+}
+
+#akun-hero .text-atas .text-dua {
+    width: 380px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#akun-hero .text-atas .text-tiga {
+    font-size: 10px;
+    font-weight: 400;
+}
+
+#akun-hero .text-atas .text-tiga a {
+    text-decoration: none;
+    color: #C1132F;
+    font-size: 10px;
+    font-weight: 600;
+    margin-left: 2px;
+}
+
+/* end akun-hero */
+
+/* akun-menu */
+#akun-menu .container {
+    background-color: #F8EDEC;
+    padding-bottom: 55vh;
+}
+
+#akun-menu a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    color: #000;
+}
+
+/* end akun-menu */
+
+/* daftar */
+#daftar .container {
+    margin-top: 80px;
+    background-color: #F8EDEC;
+    color: #000;
+}
+
+#daftar .form-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #C1132F;
+
+}
+
+#daftar .form-control {
+    background: none;
+    border: none;
+    border-bottom: 2px solid #B9B9BF;
+    border-radius: 0;
+}
+
+#daftar .btn {
+    width: 295px;
+    height: 46px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+#daftar p {
+    font-size: 10px;
+    font-weight: 400;
+}
+
+#daftar p a {
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+    color: #C1132F;
+    margin-left: 2px;
+}
+
+#daftar .card-kosong{
+    height: 45vh;
+    width: 500px;
+    background-color: #F8EDEC;
+}
+/* end daftar */
+
+/* masuk */
+#masuk .container{
+    background-color: #F8EDEC;
+    margin-top: 80px;
+    color: #000;
+}
+
+#masuk .form-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #C1132F;
+}
+
+#masuk .form-control {
+    background: none;
+    border: none;
+    border-bottom: 2px solid #B9B9BF;
+    border-radius: 0;
+}
+
+#masuk .btn {
+    width: 295px;
+    height: 46px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+#masuk p {
+    font-size: 10px;
+    font-weight: 400;
+}
+
+#masuk p a {
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+    color: #C1132F;
+    margin-left: 2px;
+}
+
+#masuk .card-kosong{
+    height: 55.5vh;
+    width: 500px;
+    background-color: #F8EDEC;
+}
+/* end masuk */

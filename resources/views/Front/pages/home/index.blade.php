@@ -21,7 +21,7 @@
                     aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div class="carousel-item">
                     <img src="{{ asset('img/carousel/menu-1.png') }}" width="100%" class="d-block w-100"
                         alt="...">
                 </div>

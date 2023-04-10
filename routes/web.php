@@ -19,12 +19,18 @@ use App\Http\Controllers\front\KirimHewanController;
 // Frontend(Client site)
 Route::name('front.')->group(function () {
     Route::get('/',[HomeController::class,'index'])->name('home');
-    Route::get('/detail-kirim-hewan-1',[KirimHewanController::class,'detail_pengirim1'])->name('kirim-hewan1');
-    Route::get('/detail-kirim-hewan-2',[KirimHewanController::class,'detail_pengirim2'])->name('kirim-hewan2');
-    Route::get('/detail-alamat',[KirimHewanController::class,'detail_alamat'])->name('detail-alamat');
+    Route::prefix('detail')->group(function(){
+        Route::get('/kirim-hewan-1',[KirimHewanController::class,'detail_pengirim1'])->name('kirim-hewan1');
+        Route::get('/kirim-hewan-2',[KirimHewanController::class,'detail_pengirim2'])->name('kirim-hewan2');
+        Route::get('/alamat',[KirimHewanController::class,'detail_alamat'])->name('detail-alamat');
+    });
 
-    Route::get('/akun',[AkunController::class,'index'])->name('akun');
-    
+    Route::prefix('akun')->group(function(){
+        Route::get('/',[AkunController::class,'index'])->name('akun');
+        Route::get('/daftar',[AkunController::class,'daftar'])->name('daftar');
+        Route::get('/masuk',[AkunController::class,'masuk'])->name('masuk');
+        Route::get('/tentang-kami',[AkunController::class,'tentang_kami'])->name('tentang-kami');
+    });
 });
 
 

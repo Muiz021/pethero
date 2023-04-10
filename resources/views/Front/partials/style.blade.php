@@ -11,3 +11,4 @@
 {{-- style --}}
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('css/kirim-hewan.css') }}">
+<link rel="stylesheet" href="{{asset('css/akun-style.css')}}">

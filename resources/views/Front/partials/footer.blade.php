@@ -1,3 +1,4 @@
+@if (!request()->is('akun*'))
 <footer>
     <section id="footer">
         <div class="container">
@@ -56,3 +57,4 @@
         </div>
     </section>
 </footer>
+@endif

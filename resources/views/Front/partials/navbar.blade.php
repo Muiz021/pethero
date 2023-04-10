@@ -1,10 +1,11 @@
+@if (!request()->is('akun/daftar','akun/masuk'))
 <section id="navbar">
     <div class="fixed-bottom">
         <div class="container">
             <div class="row">
                 <div class="col mx-auto">
                     <div class="navbar mt-3 px-4">
-                        <a href="#" class="text-center nav-item active">
+                        <a href="{{route('front.home')}}" class="text-center nav-item {{ request()->is('/') ? 'active' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                                 class="bi bi-house-door-fill" viewBox="0 0 16 16">
                                 <path
@@ -38,7 +39,7 @@
                             </svg>
                             <p>Chat</p>
                         </a>
-                        <a href="#" class="text-center nav-item">
+                        <a href="{{route('front.akun')}}" class="text-center nav-item {{ request()->is('akun*') ? 'active' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                                 class="bi bi-person-circle" viewBox="0 0 16 16">
                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -52,5 +53,5 @@
             </div>
         </div>
     </div>
-
 </section>
+@endif
