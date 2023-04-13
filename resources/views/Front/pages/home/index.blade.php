@@ -21,20 +21,18 @@
                     aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item">
-                    <img src="{{ asset('img/carousel/menu-1.png') }}" width="100%" class="d-block w-100"
-                        alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('img/carousel/menu-2.png') }}" width="100%" class="d-block w-100"
-                        alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('img/carousel/menu-3.png') }}" width="100%" class="d-block w-100"
-                        alt="...">
-                </div>
+              <div class="carousel-item active">
+                <img src="{{asset('img/carousel/menu-1.png')}}" class="d-block w-100" alt="...">
             </div>
-        </div>
+            <div class="carousel-item">
+                  <img src="{{asset('img/carousel/menu-2.png')}}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="{{asset('img/carousel/menu-3.png')}}" class="d-block w-100" alt="...">
+              </div>
+            </div>
+          </div>
+
         <div class="partial">
             <div class="d-flex justify-content-start">
                 <img src="{{ asset('img/partials/partial-1.png') }}" width="45%" alt="">

@@ -45,7 +45,7 @@
                     <p class="my-auto ms-3">Kontak Kami</p>
                 </a>
                 <img src="{{asset('img/partials/partial-7.png')}}" class="my-2" alt="">
-                <a href="#" class="d-flex">
+                <a href="{{route('front.tentang-kami')}}" class="d-flex">
                     <img src="{{asset('img/menu/akun-menu-5.png')}}" width="35px" alt="">
                     <p class="my-auto ms-3">Tentang kami</p>
                 </a>

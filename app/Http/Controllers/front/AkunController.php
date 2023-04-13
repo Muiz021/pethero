@@ -20,4 +20,9 @@ class AkunController extends Controller
     {
         return view('Front.pages.akun.masuk');
     }
+
+    public function tentang_kami()
+    {
+        return view('Front.pages.akun.tentang-kami');
+    }
 }

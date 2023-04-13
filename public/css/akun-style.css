@@ -94,15 +94,16 @@
     margin-left: 2px;
 }
 
-#daftar .card-kosong{
+#daftar .card-kosong {
     height: 45vh;
     width: 500px;
     background-color: #F8EDEC;
 }
+
 /* end daftar */
 
 /* masuk */
-#masuk .container{
+#masuk .container {
     background-color: #F8EDEC;
     margin-top: 80px;
     color: #000;
@@ -142,9 +143,68 @@
     margin-left: 2px;
 }
 
-#masuk .card-kosong{
+#masuk .card-kosong {
     height: 55.5vh;
     width: 500px;
     background-color: #F8EDEC;
 }
+
 /* end masuk */
+
+/* tentang-kami */
+
+#tentang-kami .container {
+    margin-top: 80px;
+    padding-bottom: 10vh;
+    background-color: #F8EDEC;
+    color: #000;
+}
+
+#tentang-kami .text-deskripsi {
+    width: 400px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: justify;
+
+}
+
+#tentang-kami .text-tim {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 26px;
+    color: #C1132F;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+#tentang-kami .text-jabatan {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+#tentang-kami .text-nama {
+    font-size: 15px;
+    font-weight: 500;
+    color: #C1132F;
+}
+
+#tentang-kami .sosial-media a {
+    text-decoration: none;
+    margin: 20px 30px;
+    background-color: #C1132F;
+    border: 8px solid #C1132F;
+    border-radius: 50%;
+}
+
+#tentang-kami .sosial-media svg {
+    color: #fff;
+}
+
+#tentang-kami .text-copyright {
+    font-size: 14px;
+    font-weight: 400;
+    color: #5E5757;
+    ;
+}
+
+/* end tentang-kami */
