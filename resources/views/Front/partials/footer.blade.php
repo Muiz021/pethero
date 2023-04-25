@@ -3,7 +3,7 @@
     <section id="footer">
         <div class="container">
             <div class="logo">
-                <img src="{{ asset('img/logo/logo-pethero.png') }}" width="180" alt="">
+                <img src="{{ asset('front/img/logo/logo-pethero.png') }}" width="180" alt="">
             </div>
             <div class="sosial-media">
                 <div class="d-flex">

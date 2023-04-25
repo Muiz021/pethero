@@ -25,7 +25,7 @@
     <div class="container">
         <h2 class="text-center">Detail Kirim Hewan</h2>
         <div class="d-flex justify-content-center mt-5">
-            <img src="{{ asset('img/partials/partial-5.png') }}" width="50%" alt="">
+            <img src="{{ asset('front/img/partials/partial-5.png') }}" width="50%" alt="">
         </div>
 
         <div class="card mx-4 mt-5 px-3">

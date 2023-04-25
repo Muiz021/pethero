@@ -13,7 +13,7 @@
                             </svg>
                             <p>Beranda</p>
                         </a>
-                        <a href="#" class="text-center nav-item">
+                        <a href="{{route('front.kirim-hewan1')}}" class="text-center nav-item {{ request()->is('detail*') ? 'active' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                                 class="bi bi-cart3" viewBox="0 0 16 16">
                                 <path

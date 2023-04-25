@@ -5,7 +5,7 @@
 <section id="hero">
     <div class="container">
         <div class="d-flex justify-content-end">
-            <img src="{{ asset('img/hero/hero-1.png') }}" width="90%" alt="">
+            <img src="{{ asset('front/img/hero/hero-1.png') }}" width="90%" alt="">
         </div>
         <div class="text-atas">
             <h3 class="text-satu">Pahlawan Pengiriman</h3>
@@ -22,26 +22,26 @@
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="{{asset('img/carousel/menu-1.png')}}" class="d-block w-100" alt="...">
+                <img src="{{asset('front/img/carousel/menu-1.png')}}" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                  <img src="{{asset('img/carousel/menu-2.png')}}" class="d-block w-100" alt="...">
+                  <img src="{{asset('front/img/carousel/menu-2.png')}}" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                  <img src="{{asset('img/carousel/menu-3.png')}}" class="d-block w-100" alt="...">
+                  <img src="{{asset('front/img/carousel/menu-3.png')}}" class="d-block w-100" alt="...">
               </div>
             </div>
           </div>
 
         <div class="partial">
             <div class="d-flex justify-content-start">
-                <img src="{{ asset('img/partials/partial-1.png') }}" width="45%" alt="">
+                <img src="{{ asset('front/img/partials/partial-1.png') }}" width="45%" alt="">
             </div>
             <div class="d-flex justify-content-end">
-                <img src="{{ asset('img/partials/partial-2.png') }}" width="70%" alt="">
+                <img src="{{ asset('front/img/partials/partial-2.png') }}" width="70%" alt="">
             </div>
             <div class="d-flex justify-content-start">
-                <img src="{{ asset('img/partials/partial-3.png') }}" width="70%" alt="">
+                <img src="{{ asset('front/img/partials/partial-3.png') }}" width="70%" alt="">
             </div>
         </div>
     </div>
@@ -61,22 +61,21 @@
             <div class="d-flex justify-content-center">
                 <div class="d-flex flex-column">
                     <a href="{{route('front.kirim-hewan1')}}" class="my-2">
-                        <img src="{{ asset('img/menu/menu-1.png') }}" width="100%" alt="">
+                        <img src="{{ asset('front/img/menu/menu-1.png') }}" width="100%" alt="">
                     </a>
                     <a href="#" class="my-2">
-                        <img src="{{ asset('img/menu/menu-2.png') }}" width="100%" alt="">
+                        <img src="{{ asset('front/img/menu/menu-2.png') }}" width="100%" alt="">
                     </a>
                     <a href="#" class="my-2">
-                        <img src="{{ asset('img/menu/menu-3.png') }}" width="100%" alt="">
+                        <img src="{{ asset('front/img/menu/menu-3.png') }}" width="100%" alt="">
                     </a>
                 </div>
             </div>
         </div>
 
         <div class="d-flex justify-content-end mt-5">
-            <img src="{{asset('img/partials/partial-4.png')}}" width="70%" alt="">
+            <img src="{{asset('front/img/partials/partial-4.png')}}" width="70%" alt="">
         </div>
     </div>
 </section>
-
 @endsection

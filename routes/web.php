@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\front\AkunController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\front\HomeController;
@@ -28,9 +29,21 @@ Route::name('front.')->group(function () {
     Route::prefix('akun')->group(function(){
         Route::get('/',[AkunController::class,'index'])->name('akun');
         Route::get('/daftar',[AkunController::class,'daftar'])->name('daftar');
+        Route::post('/daftar',[AkunController::class,'proses_daftar'])->name('proses_daftar');
+        Route::get('/{slug}/edit',[AkunController::class,'edit'])->name('edit');
+        Route::put('/{slug}/update',[AkunController::class,'update'])->name('update');
         Route::get('/masuk',[AkunController::class,'masuk'])->name('masuk');
         Route::get('/tentang-kami',[AkunController::class,'tentang_kami'])->name('tentang-kami');
+
+        // AuthController
+        Route::post('/masuk',[AuthController::class,'proses_login'])->name('proses_login');
+        Route::get('/logout',[AuthController::class,'logout'])->name('logout');
     });
+});
+
+// Backend(Admin)
+Route::prefix('admin')->group(function () {
+
 });
 
 

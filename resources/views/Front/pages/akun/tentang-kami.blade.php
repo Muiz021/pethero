@@ -5,7 +5,7 @@
 <section id="tentang-kami">
     <div class="container">
         <div class="ms-5 pt-5">
-            <img src="{{ asset('img/logo/logo-pethero.png') }}" width="141.65" class="pb-3" alt="">
+            <img src="{{ asset('front/img/logo/logo-pethero.png') }}" width="141.65" class="pb-3" alt="">
             <p class="text-deskripsi">Adalah penyedia layanan untuk transportasi pengiriman hewan dari berbagai daerah
                 khususnya di pulau Sulawesi</p>
         </div>
@@ -16,7 +16,7 @@
 
         <div class="d-flex justify-content-center mb-4">
             <div class="card-ceo">
-                <img src="{{ asset('img/tentang-kami/ceo.png') }}" width="150" alt="">
+                <img src="{{ asset('front/img/tentang-kami/ceo.png') }}" width="150" alt="">
                 <h3 class="text-jabatan text-center">CEO</h3>
                 <p class="text-nama text-center">M. Fajratul Ikhsan</p>
             </div>
@@ -24,7 +24,7 @@
 
         <div class="d-flex justify-content-center mb-4">
             <div class="card-cmo">
-                <img src="{{ asset('img/tentang-kami/cmo.png') }}" width="150" alt="">
+                <img src="{{ asset('front/img/tentang-kami/cmo.png') }}" width="150" alt="">
                 <h3 class="text-jabatan text-center">CMO</h3>
                 <p class="text-nama text-center">Irma Suriani S</p>
             </div>
@@ -32,7 +32,7 @@
 
         <div class="d-flex justify-content-center mb-4">
             <div class="card-cfo">
-                <img src="{{ asset('img/tentang-kami/cfo.png') }}" width="150" alt="">
+                <img src="{{ asset('front/img/tentang-kami/cfo.png') }}" width="150" alt="">
                 <h3 class="text-jabatan text-center">CFO</h3>
                 <p class="text-nama text-center">Kevin Bimantara</p>
             </div>
@@ -40,14 +40,14 @@
 
         <div class="d-flex justify-content-center mb-4">
             <div class="card-desainer">
-                <img src="{{ asset('img/tentang-kami/desainer.png') }}" width="150" alt="">
+                <img src="{{ asset('front/img/tentang-kami/desainer.png') }}" width="150" alt="">
                 <h3 class="text-jabatan text-center">UI/UX Designer</h3>
                 <p class="text-nama text-center">Nabilah Faqita Masyora</p>
             </div>
         </div>
         <div class="d-flex justify-content-center">
             <div class="card-programmer">
-                <img src="{{ asset('img/tentang-kami/programmer.png') }}" width="150" alt="">
+                <img src="{{ asset('front/img/tentang-kami/programmer.png') }}" width="150" alt="">
                 <h3 class="text-jabatan text-center">Programmer</h3>
                 <p class="text-nama text-center">Muiz Muharram</p>
             </div>
@@ -56,7 +56,7 @@
         <div class="d-flex justify-content-center">
             <div class="sosial-media">
                 <div class="d-flex">
-                    <a href="#">
+                    <a href="{{url('https://instagram.com/pethero.id?igshid=YmMyMTA2M2Y=')}}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                             class="bi bi-instagram" viewBox="0 0 16 16">
                             <path
@@ -89,7 +89,7 @@
         </div>
 
         <div class="d-flex justify-content-center my-3">
-            <img src="{{ asset('img/partials/partial-7.png') }}" width="80%" alt="">
+            <img src="{{ asset('front/img/partials/partial-7.png') }}" width="80%" alt="">
         </div>
 
         <p class="text-copyright text-center">Copyright © 2023 PetHero <br>
