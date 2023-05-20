@@ -5,7 +5,7 @@
             <script>
                 document.write(new Date().getFullYear());
             </script>
-            , MTs. LANGUAGE INSAN MANDIRI
+            , PetHero
         </div>
     </div>
 </footer>

@@ -61,5 +61,4 @@
     @yield('scripts')
     @yield('scripts2')
 </body>
-
 </html>

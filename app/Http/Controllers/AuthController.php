@@ -22,14 +22,13 @@ class AuthController extends Controller
                 Alert::success(Auth::user()->nama, "Kamu berhasil login");
                 return redirect()->route('front.akun');
             }else if(Auth::user()->roles == 'admin'){
-                //
+                Alert::success(Auth::user()->nama, "Kamu berhasil login");
+                return redirect()->route('dashboard');
             }else{
                 Alert::error( "Gagal","Username atau Password Salah");
                 return redirect()->route('front.masuk');
             }
         }
-
-        return redirect('login');
     }
 
     public function logout(Request $request)

@@ -24,5 +24,14 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('123'),
             'roles' => 'member',
         ]);
+
+        User::create([
+            'nama' => 'Irma Suriani S',
+            'username' => 'admin',
+            'slug' => Str::slug('Irma Suriani S', '-'),
+            'nomor_ponsel' => '082193793624',
+            'password' => bcrypt('123'),
+            'roles' => 'admin',
+        ]);
     }
 }

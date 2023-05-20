@@ -22,14 +22,9 @@
 </section>
 
 <section id="detail-kirim-hewan">
-    <div class="container">
-        <h2 class="text-center">Detail Kirim Hewan</h2>
-        <div class="d-flex justify-content-center mt-5">
-            <img src="{{ asset('front/img/partials/partial-6.png') }}" width="50%" alt="">
-        </div>
-
-        <div class="card mx-4 mt-5 px-3">
-            <h2 class="mb-4">Detail Alamat</h2>
+    <div class="container pt-5">
+        <div class="card mx-4 px-3">
+            <h2 class="text-center mb-4">Detail Pembayaran</h2>
             <form class="form" action="{{route('front.kirim-hewan.store')}}" method="post">
                 @csrf
                 <div class="mb-3">
@@ -56,7 +51,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="nomor_ponsel" class="form-label">NO HP</label>
-                    <input type="text" class="form-control" id="nomor_ponsel" value="{{$user->nomor_ponsel}}" name="nomor_ponsel" disabled>
+                    <input type="text" class="form-control" id="nomor_ponsel" value="#" name="nomor_ponsel" disabled>
                 </div>
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-danger my-3">Simpan</button>

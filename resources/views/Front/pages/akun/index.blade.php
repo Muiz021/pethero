@@ -10,7 +10,7 @@
         <div class="container py-5">
             <div class="card mx-4">
                 <div class="d-flex align-items-center mx-3 my-3">
-                    <img src="{{ asset('back/img/avatars/1.png') }}" class="rounded-circle" width="80px" alt="">
+                    <img src="{{ asset('images/'.$akun->gambar) }}" class="rounded-circle" width="80px" alt="">
                     <div class="text-profil mx-4">
                         <h3>{{$akun->nama}}</h3>
                         <p>{{$akun->username}}</p>
@@ -40,7 +40,7 @@
     <div class="container mt-3">
         <div class="menu py-3 px-4">
             <div class="d-flex flex-column">
-                <a href="#" class="d-flex">
+                <a href="{{route('front.riwayat-pengiriman')}}" class="d-flex">
                     <img src="{{ asset('front/img/menu/akun-menu-1.png') }}" width="40px" alt="">
                     <p class="my-auto ms-3">Riwayat Pengiriman</p>
                 </a>

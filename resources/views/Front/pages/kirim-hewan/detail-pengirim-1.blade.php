@@ -33,16 +33,12 @@
             <form class="form" action="{{route('front.kirim-hewan2')}}" method="get">
                 @csrf
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nama Pengirim</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="nama_pengirim" class="form-label">Nama Pengirim</label>
+                    <input type="text" class="form-control" id="nama_pengirim" name="nama_pengirim" required>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Alamat</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Jadwal</label>
-                    <input type="date" class="form-control" id="exampleInputPassword1">
+                    <label for="tanggal" class="form-label">Jadwal</label>
+                    <input type="date" class="form-control" id="tanggal" name="tanggal" required>
                 </div>
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-danger my-3">Lanjut</button>

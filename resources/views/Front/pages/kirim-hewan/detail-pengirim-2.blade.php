@@ -33,40 +33,43 @@
             <form class="form" action="#" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Isi Detail Hewan</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="deskripsi_hewan" class="form-label">Isi Detail Hewan</label>
+                    <input type="text" class="form-control" id="deskripsi_hewan" name="deskripsi_hewan">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Jenis Pengiriman</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" name="jenis_pengiriman">
                         <option selected>Silahkan Pilih</option>
-                        <option value="10000">Instant</option>
-                        <option value="15000">Urgent</option>
+                        <option value="1">Regular</option>
+                        <option value="2">Instant</option>
+                        <option value="3">Urgent</option>
                       </select>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Pilih Asuransi</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" name="jenis_asuransi">
                         <option selected>Silahkan Pilih</option>
-                        <option value="10000">Hewan lepas atau kabur</option>
-                        <option value="5000">Pencurian hewan</option>
-                        <option value="10000">Kecelakaan diri</option>
-                        <option value="5000">Jaminan kesehatan</option>
+                        <option value="1">Hewan lepas atau kabur</option>
+                        <option value="2">Pencurian hewan</option>
+                        <option value="3">Kecelakaan diri</option>
+                        <option value="4">Jaminan kesehatan</option>
                       </select>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Pilih Jenis Kandang</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" name="jenis_kandang">
                         <option selected>Silahkan Pilih</option>
-                        <option value="kandang-sendiri">Kandang Sendiri</option>
-                        <option value="driver">Driver</option>
+                        <option value="1">Kandang Sendiri</option>
+                        <option value="2">Driver</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Lokasi</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" name="lokasi">
                         <option selected>Silahkan</option>
-                        <option value="1">One</option>
+                        @foreach ($lokasi as $item)
+                        <option value="{{$item->id}}">{{Str::limit($item->alamat,50)}}</option>
+                        @endforeach
                       </select>
                 </div>
 
@@ -81,11 +84,10 @@
                         </a>
                     </div>
                 </div>
-                <div class="d-flex justify-content-between align-items-center my-3">
-                    <div class="text-estimasi-harga-total">
-                        <p class="text-estimasi">Estimasi Total Harga</p>
-                        <input type="text" class="form-estimasi" id="exampleInputPassword1" placeholder="Rp.">
-                    </div>
+                <input type="hidden" class="form-control" id="nama_pengirim" name="nama_pengirim">
+                <input type="hidden" class="form-control" id="tanggal" name="tanggal">
+
+                <div class="d-flex justify-content-center align-items-center my-3">
                     <button type="submit" class="btn btn-danger">Bayar</button>
                 </div>
             </form>
