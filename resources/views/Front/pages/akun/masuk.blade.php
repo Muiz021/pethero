@@ -13,9 +13,9 @@
         <form class="form mx-3 mt-3" action="{{route('front.proses_login')}}" method="post">
             @csrf
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Username</label>
-                <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{old('username')}}">
-                @error('username')
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('email')}}">
+                @error('email')
                 <div class="invalid-feedback">
                     <i class="bi bi-exclamation-circle-fill"></i>
                     {{ $message }}

@@ -11,10 +11,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
+
     public function proses_login(LoginRequest $request)
     {
 
-        $kredensil = $request->only('username', 'password');
+        $kredensil = $request->only('email', 'password');
 
         if (Auth::attempt($kredensil)) {
             Auth::user();
@@ -27,7 +28,7 @@ class AuthController extends Controller
                 return redirect()->route('dashboard');
             }
         }else {
-            Alert::error( "Gagal","Username atau Password Salah");
+            Alert::error( "Gagal","Email atau Password Salah");
             return redirect()->back();
         }
     }

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\front;
 
-use App\Http\Requests\front\KirimHewanRequest;
-use App\Models\JenisAsuransi;
-use App\Models\JenisKandang;
-use App\Models\JenisPengiriman;
 use App\Models\Lokasi;
 use App\Models\KirimHewan;
+use App\Models\JenisKandang;
 use Illuminate\Http\Request;
+use App\Models\JenisAsuransi;
+use App\Models\JenisPengiriman;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\front\KirimHewanRequest;
 
 class KirimHewanController extends Controller
 {
@@ -19,10 +19,12 @@ class KirimHewanController extends Controller
         return view('Front.pages.kirim-hewan.detail-pengirim-1');
     }
 
-    public function detail_pengirim2()
+    public function detail_pengirim2(Request $request)
     {
         $lokasi = Lokasi::get();
-        return view('Front.pages.kirim-hewan.detail-pengirim-2', compact('lokasi'));
+        $nama_pengirim = $request->nama_pengirim;
+        $tanggal = $request->tanggal;
+        return view('Front.pages.kirim-hewan.detail-pengirim-2', compact('lokasi', 'nama_pengirim', 'tanggal'));
     }
 
     public function detail_alamat()
@@ -34,9 +36,10 @@ class KirimHewanController extends Controller
     public function store(KirimHewanRequest $request)
     {
         $kirim_hewan = KirimHewan::create([
-            "nama_pengirim" => $request->query('nama_pengirim'),
+            "nama_pengirim" => $request->nama_pengirim,
             "deskripsi_hewan" => $request->deskripsi_hewan,
-            "tanggal" => $request->query('tanggal'),
+            "tanggal" => $request->tanggal,
+            "id_user" => Auth::user()->id
         ]);
 
         $jenis_pengirim = JenisPengiriman::create();

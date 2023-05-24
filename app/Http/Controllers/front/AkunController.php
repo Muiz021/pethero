@@ -15,7 +15,7 @@ class AkunController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            $akun = User::where('username',Auth::user()->username)->first();
+            $akun = User::where('password',Auth::user()->password)->first();
             return view('Front.pages.akun.index',['akun' => $akun]);
         }else{
             return view('Front.pages.akun.index');
@@ -68,7 +68,7 @@ class AkunController extends Controller
         $akun->nama = $request->nama;
         $akun->slug = Str::slug($request->nama,'-');
         $akun->nomor_ponsel = $request->nomor_ponsel;
-        $akun->username = $request->username;
+        $akun->email = $request->email;
         $akun->password = Hash::make($request->password);
 
         $akun->save();

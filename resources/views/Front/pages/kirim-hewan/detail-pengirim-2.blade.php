@@ -114,8 +114,8 @@
                         </a>
                     </div>
                 </div>
-                <input type="hidden" class="form-control" id="nama_pengirim" name="nama_pengirim">
-                <input type="hidden" class="form-control" id="tanggal" name="tanggal">
+                <input type="hidden" class="form-control" id="nama_pengirim" name="nama_pengirim" value="{{$nama_pengirim}}">
+                <input type="hidden" class="form-control" id="tanggal" name="tanggal" value="{{$tanggal}}">
 
                 <div class="d-flex justify-content-center align-items-center my-3">
                     <button type="submit" class="btn btn-danger">Bayar</button>

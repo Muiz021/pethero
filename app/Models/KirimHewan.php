@@ -32,4 +32,9 @@ class KirimHewan extends Model
     {
         return $this->hasOne(JenisPengiriman::class,'id_kirim_hewan','id');
     }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class,'id','id_user');
+    }
 }

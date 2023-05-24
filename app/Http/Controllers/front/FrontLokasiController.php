@@ -20,6 +20,6 @@ class FrontLokasiController extends Controller
             'nomor_ponsel' =>  $user->nomor_ponsel,
         ]);
 
-        return redirect()->route('front.kirim-hewan2');
+        return redirect()->route('front.kirim-hewan1');
     }
 }

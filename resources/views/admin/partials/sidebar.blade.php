@@ -1,10 +1,9 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="#" class="app-brand-link">
+        <a href="{{route('dashboard')}}" class="app-brand-link">
             <span class="app-brand-logo demo">
-                <img src="{{ asset('front/img/logo/logo.png ') }}" width="50" alt="">
+                <img src="{{ asset('front/img/logo/logo-pethero.png') }}" width="30%" alt="">
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">admin</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
@@ -16,8 +15,8 @@
 
     <ul class="menu-inner py-1 mb-5">
         <!-- Page -->
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ request()->is('admin/dashboard*') ? 'active' : '' }}">
+            <a href="{{route('dashboard')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div>Dashboard</div>
             </a>
