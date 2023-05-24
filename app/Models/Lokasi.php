@@ -14,6 +14,6 @@ class Lokasi extends Model
 
     public function kirim_hewan()
     {
-        return $this->belongsTo(KirimHewan::class);
+        return $this->belongsTo(KirimHewan::class,'id','id_kirim_hewan');
     }
 }

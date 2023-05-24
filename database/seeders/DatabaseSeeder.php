@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'muiz021',
             'slug' => Str::slug('Muiz Muharram', '-'),
             'nomor_ponsel' => '081343671284',
-            'password' => bcrypt('123'),
+            'password' => bcrypt('12345678'),
             'roles' => 'member',
         ]);
 
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin',
             'slug' => Str::slug('Irma Suriani S', '-'),
             'nomor_ponsel' => '082193793624',
-            'password' => bcrypt('123'),
+            'password' => bcrypt('12345678'),
             'roles' => 'admin',
         ]);
     }

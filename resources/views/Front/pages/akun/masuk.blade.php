@@ -14,11 +14,23 @@
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Username</label>
-                <input type="text" class="form-control" name="username">
+                <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{old('username')}}">
+                @error('username')
+                <div class="invalid-feedback">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    {{ $message }}
+                </div>
+            @enderror
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password">
+                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{old('password')}}">
+                @error('password')
+                <div class="invalid-feedback">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    {{ $message }}
+                </div>
+            @enderror
             </div>
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-danger my-3">Masuk</button>

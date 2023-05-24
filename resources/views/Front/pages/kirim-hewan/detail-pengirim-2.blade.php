@@ -34,43 +34,73 @@
                 @csrf
                 <div class="mb-3">
                     <label for="deskripsi_hewan" class="form-label">Isi Detail Hewan</label>
-                    <input type="text" class="form-control" id="deskripsi_hewan" name="deskripsi_hewan">
+                    <input type="text" class="form-control  @error('deskripsi_hewan') is-invalid @enderror" id="deskripsi_hewan" name="deskripsi_hewan">
+                    @error('deskripsi_hewan')
+                    <div class="invalid-feedback">
+                        <i class="bi bi-exclamation-circle-fill"></i>
+                        {{ $message }}
+                    </div>
+                @enderror
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Jenis Pengiriman</label>
-                    <select class="form-select" aria-label="Default select example" name="jenis_pengiriman">
-                        <option selected>Silahkan Pilih</option>
-                        <option value="1">Regular</option>
-                        <option value="2">Instant</option>
-                        <option value="3">Urgent</option>
+                    <select class="form-select  @error('jenis_pengiriman') is-invalid @enderror" name="jenis_pengiriman">
+                        <option value="" selected>Silahkan Pilih</option>
+                        <option value="1" {{ old('jenis_pengiriman') == 1 ? 'selected' : '' }}>Regular</option>
+                        <option value="2" {{ old('jenis_pengiriman') == 2 ? 'selected' : '' }}>Instant</option>
+                        <option value="3" {{ old('jenis_pengiriman') == 3 ? 'selected' : '' }}>Urgent</option>
                       </select>
+                      @error('jenis_pengiriman')
+                      <div class="invalid-feedback">
+                          <i class="bi bi-exclamation-circle-fill"></i>
+                          {{ $message }}
+                      </div>
+                  @enderror
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Pilih Asuransi</label>
-                    <select class="form-select" aria-label="Default select example" name="jenis_asuransi">
-                        <option selected>Silahkan Pilih</option>
-                        <option value="1">Hewan lepas atau kabur</option>
-                        <option value="2">Pencurian hewan</option>
-                        <option value="3">Kecelakaan diri</option>
-                        <option value="4">Jaminan kesehatan</option>
+                    <select class="form-select  @error('jenis_asuransi') is-invalid @enderror" name="jenis_asuransi">
+                        <option value="" selected>Silahkan Pilih</option>
+                        <option value="1" {{ old('jenis_asuransi') == 1 ? 'selected' : '' }}>Hewan lepas atau kabur</option>
+                        <option value="2" {{ old('jenis_asuransi') == 2 ? 'selected' : '' }}>Pencurian hewan</option>
+                        <option value="3" {{ old('jenis_asuransi') == 3 ? 'selected' : '' }}>Kecelakaan diri</option>
+                        <option value="4" {{ old('jenis_asuransi') == 4 ? 'selected' : '' }}>Jaminan kesehatan</option>
                       </select>
+                      @error('jenis_asuransi')
+                      <div class="invalid-feedback">
+                          <i class="bi bi-exclamation-circle-fill"></i>
+                          {{ $message }}
+                      </div>
+                  @enderror
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Pilih Jenis Kandang</label>
-                    <select class="form-select" aria-label="Default select example" name="jenis_kandang">
-                        <option selected>Silahkan Pilih</option>
-                        <option value="1">Kandang Sendiri</option>
-                        <option value="2">Driver</option>
+                    <select class="form-select  @error('jenis_kandang') is-invalid @enderror" name="jenis_kandang">
+                        <option value="" selected>Silahkan Pilih</option>
+                        <option value="1" {{ old('jenis_kandang') == 1 ? 'selected' : '' }}>Kandang Sendiri</option>
+                        <option value="2" {{ old('jenis_kandang') == 2 ? 'selected' : '' }}>Driver</option>
                     </select>
+                    @error('jenis_kandang')
+                    <div class="invalid-feedback">
+                        <i class="bi bi-exclamation-circle-fill"></i>
+                        {{ $message }}
+                    </div>
+                @enderror
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Lokasi</label>
-                    <select class="form-select" aria-label="Default select example" name="lokasi">
-                        <option selected>Silahkan</option>
+                    <select class="form-select  @error('lokasi') is-invalid @enderror" name="lokasi">
+                        <option value="" selected>Silahkan</option>
                         @foreach ($lokasi as $item)
-                        <option value="{{$item->id}}">{{Str::limit($item->alamat,50)}}</option>
+                        <option value="{{$item->id}}" {{ old('lokasi') == $item->id ? 'selected' : '' }}>{{Str::limit($item->alamat,50)}}</option>
                         @endforeach
                       </select>
+                      @error('lokasi')
+                      <div class="invalid-feedback">
+                          <i class="bi bi-exclamation-circle-fill"></i>
+                          {{ $message }}
+                      </div>
+                  @enderror
                 </div>
 
                 <div class="mb-3">

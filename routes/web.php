@@ -2,12 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\front\FrontLokasiController;
 use App\Http\Controllers\back\UserController;
 use App\Http\Controllers\front\AkunController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\back\DashboardController;
 use App\Http\Controllers\front\KirimHewanController;
+use App\Http\Controllers\front\FrontLokasiController;
+use App\Http\Controllers\back\BackKirimHewanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,4 +53,5 @@ Route::name('front.')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::resource('user', UserController::class)->except(['create','store','edit','update']);
+    Route::resource('kirim-hewan',BackKirimHewanController::class)->except(['create','store','edit']);
 });

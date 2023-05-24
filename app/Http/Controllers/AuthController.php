@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\front\LoginRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -10,9 +11,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
-    public function proses_login(Request $request)
+    public function proses_login(LoginRequest $request)
     {
-        request()->validate(['username' => 'required', 'password' => 'required']);
 
         $kredensil = $request->only('username', 'password');
 
@@ -21,13 +21,14 @@ class AuthController extends Controller
             if (Auth::user()->roles == 'member') {
                 Alert::success(Auth::user()->nama, "Kamu berhasil login");
                 return redirect()->route('front.akun');
-            }else if(Auth::user()->roles == 'admin'){
+            }else
+            if(Auth::user()->roles == 'admin'){
                 Alert::success(Auth::user()->nama, "Kamu berhasil login");
                 return redirect()->route('dashboard');
-            }else{
-                Alert::error( "Gagal","Username atau Password Salah");
-                return redirect()->route('front.masuk');
             }
+        }else {
+            Alert::error( "Gagal","Username atau Password Salah");
+            return redirect()->back();
         }
     }
 

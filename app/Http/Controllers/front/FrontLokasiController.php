@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\front;
 
+use App\Http\Requests\front\LokasiRequest;
 use App\Models\Lokasi;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class FrontLokasiController extends Controller
 {
-    public function store(Request $request)
+    public function store(LokasiRequest $request)
     {
         $user = Auth::user();
         Lokasi::create([

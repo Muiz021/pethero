@@ -30,29 +30,47 @@
 
         <div class="card mx-4 mt-5 px-3">
             <h2 class="mb-4">Detail Alamat</h2>
-            <form class="form" action="{{route('front.kirim-hewan.store')}}" method="post">
+            <form class="form" action="{{route('front.alamat.store')}}" method="post">
                 @csrf
                 <div class="mb-3">
                     <label for="label_alamat" class="form-label">Label Alamat</label>
-                    <select class="form-select" aria-label="Default select example" name="label_alamat">
-                        <option selected>Silahkan Pilih</option>
-                        <option value="rumah">Rumah</option>
-                        <option value="kantor">Kantor</option>
-                        <option value="sekolah">Sekolah</option>
-                        <option value="kontrakan">Kontrakan</option>
+                    <select class="form-select  @error('label_alamat') is-invalid @enderror" name="label_alamat">
+                        <option value="" selected>Silahkan Pilih</option>
+                        <option value="rumah" {{ old('label_alamat') == 'rumah' ? 'selected' : '' }}>Rumah</option>
+                        <option value="kantor" {{ old('label_alamat') == 'kantor' ? 'selected' : '' }}>Kantor</option>
+                        <option value="sekolah" {{ old('label_alamat') == 'sekolah' ? 'selected' : '' }}>Sekolah</option>
+                        <option value="kontrakan" {{ old('label_alamat') == 'kontrakan' ? 'selected' : '' }}>Kontrakan</option>
                     </select>
+                    @error('label_alamat')
+                    <div class="invalid-feedback">
+                        <i class="bi bi-exclamation-circle-fill"></i>
+                        {{ $message }}
+                    </div>
+                @enderror
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Alamat Lengkap</label>
-                    <textarea name="alamat" id="alamat" class="form-control" cols="30" rows="5"></textarea>
+                    <textarea name="alamat" id="alamat" class="form-control  @error('alamat') is-invalid @enderror" cols="30" rows="5">{{old('alamat')}}</textarea>
+                    @error('alamat')
+                    <div class="invalid-feedback">
+                        <i class="bi bi-exclamation-circle-fill"></i>
+                        {{ $message }}
+                    </div>
+                @enderror
                 </div>
                 <div class="mb-3">
                     <label for="catatan_driver" class="form-label">Catatan untuk driver(opsional)</label>
-                    <input type="text" class="form-control" id="catatan_driver" name="catatan_driver">
+                    <input type="text" class="form-control" id="catatan_driver" name="catatan_driver" value="{{old('catatan_driver')}}">
                 </div>
                 <div class="mb-3">
                     <label for="nama_penerimaan" class="form-label">Nama Penerima</label>
-                    <input type="text" class="form-control" id="nama_penerimaan" name="nama_penerimaan">
+                    <input type="text" class="form-control  @error('nama_penerimaan') is-invalid @enderror" id="nama_penerimaan" name="nama_penerimaan" value="{{old('nama_penerimaan')}}">
+                    @error('nama_penerimaan')
+                    <div class="invalid-feedback">
+                        <i class="bi bi-exclamation-circle-fill"></i>
+                        {{ $message }}
+                    </div>
+                @enderror
                 </div>
                 <div class="mb-3">
                     <label for="nomor_ponsel" class="form-label">NO HP</label>

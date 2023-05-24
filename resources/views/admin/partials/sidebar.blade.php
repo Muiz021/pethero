@@ -25,10 +25,10 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Master Data</span>
         </li>
-        <li class="menu-item {{ request()->is('admin/') ? 'active' : '' }}">
-            <a href="#" class="menu-link">
-                <i class='menu-icon bx bxs-school'></i>
-                <div>Profil Sekolah</div>
+        <li class="menu-item {{ request()->is('admin/kirim-hewan*') ? 'active' : '' }}">
+            <a href="{{route('kirim-hewan.index')}}" class="menu-link">
+                <i class='menu-icon bx bxs-data'></i>
+                <div>Kirim Hewan</div>
             </a>
         </li>
         <li class="menu-header small text-uppercase">
@@ -36,12 +36,9 @@
         </li>
         <li class="menu-item {{ request()->is('admin/user*') ? 'active' : '' }}">
             <a href="{{route('user.index')}}" class="menu-link">
-                <i class='menu-icon bx bxs-news'></i>
+                <i class='menu-icon bx bxs-user-circle'></i>
                 <div>Member</div>
             </a>
-        </li>
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">PPDB</span>
         </li>
     </ul>
 </aside>

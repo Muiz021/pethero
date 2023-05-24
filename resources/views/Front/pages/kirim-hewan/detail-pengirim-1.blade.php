@@ -34,11 +34,11 @@
                 @csrf
                 <div class="mb-3">
                     <label for="nama_pengirim" class="form-label">Nama Pengirim</label>
-                    <input type="text" class="form-control" id="nama_pengirim" name="nama_pengirim" required>
+                    <input type="text" class="form-control" id="nama_pengirim" name="nama_pengirim" value="{{old('nama_pengirim')}}" required>
                 </div>
                 <div class="mb-3">
                     <label for="tanggal" class="form-label">Jadwal</label>
-                    <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+                    <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{old('tanggal')}}" required>
                 </div>
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-danger my-3">Lanjut</button>
