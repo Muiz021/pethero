@@ -46,6 +46,9 @@ Route::name('front.')->group(function () {
         // AuthController
         Route::post('/masuk',[AuthController::class,'proses_login'])->name('proses_login');
         Route::get('/logout',[AuthController::class,'logout'])->name('logout');
+        Route::get('notifikasi-user', function(){
+            return view('front.pages.email.notifikasi-user');
+        });
     });
 });
 

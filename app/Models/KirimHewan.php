@@ -11,11 +11,11 @@ class KirimHewan extends Model
     protected $guarded = ['id'];
     protected $table = 'kirim_hewan';
 
-    protected $with = ['lokasi','jenis_asuransi','jenis_kandang','jenis_pengiriman'];
+    protected $with = ['jenis_asuransi','jenis_kandang','jenis_pengiriman'];
 
-    public function lokasi()
+    public function detail_lokasi()
     {
-        return $this->hasOne(Lokasi::class,'id_kirim_hewan','id');
+        return $this->belongsTo(DetailLokasi::class,'id','id_detail_lokasi');
     }
 
     public function jenis_asuransi()

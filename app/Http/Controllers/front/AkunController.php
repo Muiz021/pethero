@@ -6,6 +6,7 @@ use App\Models\KirimHewan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\DetailLokasi;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -87,7 +88,10 @@ class AkunController extends Controller
 
     public function riwayat_pengiriman()
     {
-        $data = KirimHewan::get();
-        return view('front.pages.akun.riwayat-pengiriman',['data' => $data]);
+        $user = Auth::user();
+        $data = KirimHewan::where('id_user', $user->id)->get();
+        $lokasi = DetailLokasi::where('id_user',$user->id)->get();
+        return view('front.pages.akun.riwayat-pengiriman',['data' => $data, 'lokasi' => $lokasi]);
     }
+
 }

@@ -19,7 +19,7 @@
                             <h5>{{$item->nama_pengirim}}</h5>
                         </div>
                     </div>
-                    <p><b>{{Carbon::parse($item->tanggal)->isoFormat('dddd, D MMMM YYYY')}}</b></p>
+                    <p><b>{{Carbon::parse($item->created_at)->isoFormat('dddd, D MMMM YYYY')}}</b></p>
                 </div>
                 <div class="d-flex justify-between my-3">
                     <img src="{{ asset('front/img/detail-pembayaran/box.png') }}" width="50px" alt="">
@@ -31,7 +31,11 @@
                                 <path
                                     d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
                             </svg>
-                            <span>{{Str::limit($item->lokasi->alamat,30)}}</span>
+                            @foreach ($lokasi as $alamat)
+                            @if ($alamat->id == $item->id_detail_lokasi)
+                            <span>{{Str::limit($alamat->alamat,30)}}</span>
+                            @endif
+                            @endforeach
                         </div>
                     </div>
                     <p class="d-flex align-items-center"><b>Rp.{{number_format($item->jenis_pengiriman->harga,0,',','.')}}</b></p>

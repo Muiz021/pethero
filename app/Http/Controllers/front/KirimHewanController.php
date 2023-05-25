@@ -4,12 +4,15 @@ namespace App\Http\Controllers\front;
 
 use App\Models\Lokasi;
 use App\Models\KirimHewan;
+use App\Models\DetailLokasi;
 use App\Models\JenisKandang;
 use Illuminate\Http\Request;
 use App\Models\JenisAsuransi;
 use App\Models\JenisPengiriman;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\front\KirimHewanRequest;
 
 class KirimHewanController extends Controller
@@ -35,7 +38,19 @@ class KirimHewanController extends Controller
 
     public function store(KirimHewanRequest $request)
     {
+        $lokasi = Lokasi::where('id',$request->lokasi)->first();
+        $user = Auth::user()->id;
+        $detail_lokasi = DetailLokasi::create([
+            'id_user' => $user,
+            'label_alamat' => $lokasi->label_alamat,
+            'alamat' => $lokasi->alamat,
+            'catatan_driver' => $lokasi->catatan_driver,
+            'nama_penerimaan' => $lokasi->nama_penerimaan,
+            'nomor_ponsel' => $lokasi->nomor_ponsel,
+        ]);
+
         $kirim_hewan = KirimHewan::create([
+            "id_detail_lokasi" => $detail_lokasi->id,
             "nama_pengirim" => $request->nama_pengirim,
             "deskripsi_hewan" => $request->deskripsi_hewan,
             "tanggal" => $request->tanggal,
@@ -45,12 +60,6 @@ class KirimHewanController extends Controller
         $jenis_pengirim = JenisPengiriman::create();
         $jenis_asuransi = JenisAsuransi::create();
         $jenis_kandang = JenisKandang::create();
-        $lokasi = Lokasi::where('id',$request->lokasi)->first();
-        $lokasi->update([
-            'id_kirim_hewan' => $kirim_hewan->id
-        ]);
-
-
 
         if ($request->jenis_pengiriman == 1) {
             $jenis_pengirim->update([
@@ -114,13 +123,26 @@ class KirimHewanController extends Controller
             ]);
         }
 
+        Mail::send('front.pages.email.notifikasi-admin', ['nama_pelanggan' => Auth::user()->nama, 'email_pelanggan' => Auth::user()->email], function ($message) {
+            $pethero = "60900120016@uin-alauddin.ac.id";
+            $message->to($pethero);
+            $message->subject('Pemberitahuan Transaksi');
+        });
+
+        Mail::send('front.pages.email.notifikasi-user', ['data' => $kirim_hewan], function ($message) {
+            $message->to(Auth::user()->email);
+            $message->subject('Transaksi');
+        });
+
+        Alert::success(Auth::user()->nama, "Ada Pesan Ke Email Kamu");
         return redirect('detail/pembayaran/'.$kirim_hewan->id);
     }
 
     public function detail_pembayaran($id)
     {
         $kirim_hewan = KirimHewan::where('id', $id)->first();
-        return view('front.pages.kirim-hewan.detail-pembayaran', ['kirim_hewan' => $kirim_hewan]);
+        $lokasi = DetailLokasi::where('id', $kirim_hewan->id_detail_lokasi)->first();
+        return view('front.pages.kirim-hewan.detail-pembayaran', ['kirim_hewan' => $kirim_hewan, 'lokasi' => $lokasi]);
     }
 
 }

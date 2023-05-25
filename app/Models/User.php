@@ -44,9 +44,16 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    protected $with = ['kirim_hewan'];
+
     public function kirim_hewan()
     {
         return $this->hasMany(KirimHewan::class,'id_user','id');
 
+    }
+
+    public function detail_lokasi()
+    {
+        return $this->hasMany(DetailLokasi::class,'id_user','id');
     }
 }

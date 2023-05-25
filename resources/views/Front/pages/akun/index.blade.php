@@ -46,7 +46,7 @@
         <div class="menu py-3 px-4">
             <div class="d-flex flex-column">
                 @if (Auth::user())
-                    @if ($kirim_hewan = KirimHewan::where('id_user', Auth::user()->id)->get() != null)
+                    @if ($kirim_hewan = KirimHewan::where('id_user', Auth::user()->id)->get() == null)
                         <a href="#" onclick="return confirm('Kamu Belum Melakukan Transaksi');" class="d-flex">
                             <img src="{{ asset('front/img/menu/akun-menu-1.png') }}" width="40px" alt="">
                             <p class="my-auto ms-3">Riwayat Pengiriman</p>

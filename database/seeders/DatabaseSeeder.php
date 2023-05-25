@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'nama' => 'Irma Suriani S',
-            'email' => 'irmasinari14.gmail.com',
+            'email' => 'irmasinari14@gmail.com',
             'slug' => Str::slug('Irma Suriani S', '-'),
             'nomor_ponsel' => '082193793624',
             'password' => bcrypt('12345678'),

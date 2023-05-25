@@ -11,9 +11,4 @@ class Lokasi extends Model
 
     protected $guarded = ['id'];
     protected $table = 'lokasi';
-
-    public function kirim_hewan()
-    {
-        return $this->belongsTo(KirimHewan::class,'id','id_kirim_hewan');
-    }
 }

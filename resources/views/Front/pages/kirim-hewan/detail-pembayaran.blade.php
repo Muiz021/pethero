@@ -2,6 +2,9 @@
 
 @section('content')
 @section('title', 'Detail Pembayaran')
+{{-- sweetalert --}}
+@include('sweetalert::alert')
+{{-- end sweetalert --}}
 
 @php
     use Carbon\Carbon;
@@ -31,7 +34,7 @@
             <h2 class="text-center text-uppercase mb-4">Detail Pembayaran</h2>
             <div class="d-flex justify-content-between mt-3">
                 <span>Tanggal Transaksi</span>
-                <span><b>{{ Carbon::parse($kirim_hewan->tanggal)->isoFormat('dddd, D MMMM YYYY') }}</b></span>
+                <span><b>{{ Carbon::parse($kirim_hewan->created_at)->isoFormat('dddd, D MMMM YYYY') }}</b></span>
             </div>
             <div class="d-flex justify-content-between">
                 <span>Kategori Produk</span>
@@ -66,24 +69,28 @@
                 <span><b>Detail Lokasi</b></span>
             </div>
             <div class="d-flex justify-content-between">
+                <span class="w-50">Jadwal Pengiriman</span>
+                <span class="w-50"><b>{{ Carbon::parse($kirim_hewan->tanggal)->isoFormat('dddd, D MMMM YYYY') }}</b></span>
+            </div>
+            <div class="d-flex justify-content-between">
                 <span class="w-50">Label Rumah</span>
-                <span class="w-50"><b>{{ $kirim_hewan->lokasi->label_alamat }}</b></span>
+                <span class="w-50"><b>{{ $lokasi->label_alamat }}</b></span>
             </div>
             <div class="d-flex justify-content-between">
                 <span class="w-50">Alamat</span>
-                <span class="w-50"><b>{{ $kirim_hewan->lokasi->alamat }}</b></span>
+                <span class="w-50"><b>{{ $lokasi->alamat }}</b></span>
             </div>
             <div class="d-flex justify-content-between">
                 <span class="w-50">Nama Penerima</span>
-                <span class="w-50"><b>{{ $kirim_hewan->lokasi->nama_penerimaan }}</b></span>
+                <span class="w-50"><b>{{ $lokasi->nama_penerimaan }}</b></span>
             </div>
             <div class="d-flex justify-content-between">
                 <span class="w-50">Catatan Driver</span>
-                <span class="w-50"><b>{{ $kirim_hewan->lokasi->catatan_driver }}</b></span>
+                <span class="w-50"><b>{{ $lokasi->catatan_driver }}</b></span>
             </div>
             <div class="d-flex justify-content-between">
                 <span class="w-50">Nomor Ponsel</span>
-                <span class="w-50"><b>{{ $kirim_hewan->lokasi->nomor_ponsel }}</b></span>
+                <span class="w-50"><b>{{ $lokasi->nomor_ponsel }}</b></span>
             </div>
             <img src="{{ asset('front/img/partials/partial-7.png') }}" class="my-2" alt="">
             <div class="d-flex justify-content-start">
@@ -108,7 +115,7 @@
                 <span><b>Rp.{{number_format($kirim_hewan->jenis_pengiriman->harga + $kirim_hewan->jenis_asuransi->harga,0,',','.')}}</b></span>
             </div>
             <div class="d-flex justify-content-end my-3">
-                <a href="{{route('front.riwayat-pengiriman')}}" class="btn btn-danger my-0" style="width: 100px; border-radius:5px;"><b>Kembali</b></a>
+                <a href="{{route('front.riwayat-pengiriman')}}" class="btn btn-danger my-0" style="width: 100px; border-radius:5px;"><b>Riwayat</b></a>
             </div>
         </div>
     </div>
