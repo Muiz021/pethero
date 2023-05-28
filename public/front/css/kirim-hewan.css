@@ -1,12 +1,21 @@
 #hero .text-atas-kirim-hewan {
     background-image: url('../img/hero/hero-2.png');
     background-size: cover;
-    height: 400px;
-    margin-top: 80px;
-    padding-top: 70px;
+    height: 600px;
     padding-left: 20px;
     padding-right: 20px;
     text-align: justify;
+}
+
+@media screen and (max-width: 600px) {
+    #hero .text-atas-kirim-hewan {
+        background-image: url('../img/hero/hero-2.png');
+        background-size: cover;
+        height: 400px;
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: justify;
+    }
 }
 
 #hero .text-atas-kirim-hewan h2 {
@@ -19,7 +28,11 @@
     font-weight: 500;
 }
 
-#detail-kirim-hewan .container {
+#hero .content{
+    background-color: #F8EDEC;
+}
+
+#detail-kirim-hewan .content {
     background-color: #F8EDEC;
 }
 
@@ -37,7 +50,7 @@
     border-radius: 25px;
 }
 
-#detail-kirim-hewan-2 .container {
+#detail-kirim-hewan-2 .content {
     background-color: #F8EDEC;
 }
 

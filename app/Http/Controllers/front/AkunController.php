@@ -4,12 +4,13 @@ namespace App\Http\Controllers\front;
 
 use App\Models\KirimHewan;
 use Illuminate\Support\Str;
+use App\Models\DetailLokasi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\DetailLokasi;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AkunController extends Controller
 {
@@ -39,8 +40,10 @@ class AkunController extends Controller
         $akun = User::where('slug',$slug)->first();
 
         if ($request->gambar) {
-            $file_path = public_path().'/images/'.$akun->gambar;
-            unlink($file_path);
+            if ($akun->gambar) {
+                $file_path = public_path().'/images/'.$akun->gambar;
+                unlink($file_path);
+            }
 
             $akun->nama = $request->nama;
             $akun->slug = Str::slug($request->nama,'-');
@@ -73,7 +76,8 @@ class AkunController extends Controller
         $akun->password = Hash::make($request->password);
 
         $akun->save();
-        return redirect()->route('front.masuk');
+        Alert::success("Sukses", "Kamu Berhasil Membuat Akun");
+        return redirect()->route('masuk');
     }
 
     public function masuk()

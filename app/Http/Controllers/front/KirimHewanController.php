@@ -124,7 +124,7 @@ class KirimHewanController extends Controller
         }
 
         Mail::send('front.pages.email.notifikasi-admin', ['nama_pelanggan' => Auth::user()->nama, 'email_pelanggan' => Auth::user()->email], function ($message) {
-            $pethero = "60900120016@uin-alauddin.ac.id";
+            $pethero = "petheromakassar@gmail.com";
             $message->to($pethero);
             $message->subject('Pemberitahuan Transaksi');
         });

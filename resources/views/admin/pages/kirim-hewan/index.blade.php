@@ -8,6 +8,10 @@
 
 @section('content')
 @section('title', 'Kirim Hewan')
+
+{{-- sweetalert --}}
+@include('sweetalert::alert')
+{{-- end sweetalert --}}
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4">Kirim Hewan</h4>
 
@@ -25,7 +29,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($data as $item)
+                        @foreach ($kirim_hewan as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama_pengirim }}</td>
@@ -46,7 +50,12 @@
                                     <button class="btn btn-danger btn-sm" type="button" data-bs-toggle="modal"
                                     data-bs-target="#delete-modal-{{ $item->id }}"><span><i
                                             class="bx bx-trash me-sm-2"></i> <span
-                                            class="d-none d-sm-inline-block">Delete</span></span>
+                                            class="d-none d-sm-inline-block">Hapus</span></span>
+                                </button>
+
+                                    <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#edit-modal-{{ $item->id }}"><span><i class='bx bxs-edit me-sm-2'></i> <span
+                                            class="d-none d-sm-inline-block">Perbarui</span></span>
                                 </button>
                                 </td>
                             </tr>
@@ -55,7 +64,7 @@
                 </table>
             </div>
         </div>
-        {{-- @include('admin.pages.user.modal') --}}
+        @include('admin.pages.kirim-hewan.modal')
     </div>
 </div>
 @endsection

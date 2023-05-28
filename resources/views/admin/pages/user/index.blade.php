@@ -19,7 +19,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Nama</th>
-                            <th>Username</th>
+                            <th>Email</th>
                             <th>Role</th>
                             <th>Aksi</th>
                         </tr>
@@ -29,7 +29,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama }}</td>
-                                <td>{{ $item->username }}</td>
+                                <td>{{ $item->email }}</td>
                                 <td>{{ $item->roles }}</td>
                                 <td>
                                     @if ($item->name == 'Administrator')

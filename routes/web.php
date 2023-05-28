@@ -21,10 +21,17 @@ use App\Http\Controllers\back\BackKirimHewanController;
 |
 */
 
+Route::prefix('akun')->group( function(){
+    Route::get('/masuk',[AkunController::class,'masuk'])->name('masuk');
+    Route::post('/masuk',[AuthController::class,'proses_login'])->name('proses_login');
+});
+
+
 // Frontend(Client site)
 Route::name('front.')->group(function () {
     Route::get('/',[HomeController::class,'index'])->name('home');
-    Route::prefix('detail')->group(function(){
+
+    Route::namespace('hanya untuk user')->prefix('detail')->middleware(['auth','OnlyUser'])->group(function(){
         Route::get('/kirim-hewan-1',[KirimHewanController::class,'detail_pengirim1'])->name('kirim-hewan1');
         Route::get('/kirim-hewan-2',[KirimHewanController::class,'detail_pengirim2'])->name('kirim-hewan2');
         Route::post('/kirim-hewan-2',[KirimHewanController::class,'store'])->name('kirim-hewan.store');
@@ -37,24 +44,24 @@ Route::name('front.')->group(function () {
         Route::get('/',[AkunController::class,'index'])->name('akun');
         Route::get('/daftar',[AkunController::class,'daftar'])->name('daftar');
         Route::post('/daftar',[AkunController::class,'proses_daftar'])->name('proses_daftar');
-        Route::get('/{slug}/edit',[AkunController::class,'edit'])->name('edit');
-        Route::put('/{slug}/update',[AkunController::class,'update'])->name('update');
-        Route::get('/masuk',[AkunController::class,'masuk'])->name('masuk');
         Route::get('/tentang-kami',[AkunController::class,'tentang_kami'])->name('tentang-kami');
-        Route::get('/riwayat-pengiriman',[AkunController::class,'riwayat_pengiriman'])->name('riwayat-pengiriman');
+
+        // Only User
+        Route::namespace('hanya untuk user')->middleware(['auth','OnlyUser'])->group( function(){
+            Route::get('/{slug}/edit',[AkunController::class,'edit'])->name('edit');
+            Route::put('/{slug}/update',[AkunController::class,'update'])->name('update');
+            Route::get('/riwayat-pengiriman',[AkunController::class,'riwayat_pengiriman'])->name('riwayat-pengiriman');
+            Route::get('/logout',[AuthController::class,'logout'])->name('logout.user');
+        });
 
         // AuthController
-        Route::post('/masuk',[AuthController::class,'proses_login'])->name('proses_login');
-        Route::get('/logout',[AuthController::class,'logout'])->name('logout');
-        Route::get('notifikasi-user', function(){
-            return view('front.pages.email.notifikasi-user');
-        });
     });
 });
 
 // Backend(Admin)
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth','OnlyAdmin'])->group(function () {
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::resource('user', UserController::class)->except(['create','store','edit','update']);
     Route::resource('kirim-hewan',BackKirimHewanController::class)->except(['create','store','edit']);
+    Route::get('logout',[AuthController::class,'logout'])->name('logout.admin');
 });

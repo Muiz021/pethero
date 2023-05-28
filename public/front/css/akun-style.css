@@ -3,13 +3,17 @@
     margin-top: 80px;
 }
 
-#akun-hero .container {
+#akun-hero .content {
     background-color: #F8EDEC;
+}
+
+#akun-hero .container .col-md-6 {
+    padding: 0;
 }
 
 #akun-hero .text-atas .text-satu {
     margin-top: 40px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-size: 18px;
     font-weight: 400;
     color: #000;
@@ -42,6 +46,16 @@
 
 #akun-hero .card img {
     border: 1px solid #fff;
+    width: 150px;
+    height: 150px;
+}
+
+@media screen and (max-width: 600px) {
+    #akun-hero .card img {
+        border: 1px solid #fff;
+        width: 100px;
+        height: 100px;
+    }
 }
 
 #akun-hero .card .text-profil h3 {
@@ -63,9 +77,13 @@
 /* end akun-hero */
 
 /* akun-menu */
-#akun-menu .container {
+#akun-menu .content {
     background-color: #F8EDEC;
     padding-bottom: 55vh;
+}
+
+#akun-menu .container .col-md-6 {
+    padding: 0;
 }
 
 #akun-menu a {
@@ -80,8 +98,16 @@
 /* daftar */
 #daftar .container {
     margin-top: 80px;
+}
+
+#daftar .container .col-md-6 {
+    padding: 0;
+}
+
+#daftar .content {
     background-color: #F8EDEC;
     color: #000;
+    height: 90vh;
 }
 
 #daftar .form-label {
@@ -119,19 +145,80 @@
     margin-left: 2px;
 }
 
-#daftar .card-kosong {
-    height: 45vh;
-    width: 500px;
-    background-color: #F8EDEC;
+/* end daftar */
+
+/* edit */
+#edit .container {
+    margin-top: 80px;
 }
 
-/* end daftar */
+#edit .container .col-md-6 {
+    padding: 0;
+}
+
+#edit .content {
+    background-color: #F8EDEC;
+    color: #000;
+    height: 90vh;
+}
+
+@media screen and (max-width: 600px) {
+    #edit .content {
+        background-color: #F8EDEC;
+        color: #000;
+        height: 110vh;
+    }
+}
+
+#edit .form-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #C1132F;
+
+}
+
+#edit .form-control {
+    background: none;
+    border: none;
+    border-bottom: 2px solid #B9B9BF;
+    border-radius: 0;
+}
+
+#edit .btn {
+    width: 295px;
+    height: 46px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+#edit p {
+    font-size: 10px;
+    font-weight: 400;
+}
+
+#edit p a {
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+    color: #C1132F;
+    margin-left: 2px;
+}
+/* end edit */
 
 /* masuk */
 #masuk .container {
-    background-color: #F8EDEC;
     margin-top: 80px;
+}
+
+#masuk .container .col-md-6 {
+    padding: 0;
+}
+
+#masuk .content {
+    background-color: #F8EDEC;
     color: #000;
+    height: 90vh;
 }
 
 #masuk .form-label {
@@ -167,26 +254,25 @@
     color: #C1132F;
     margin-left: 2px;
 }
-
-#masuk .card-kosong {
-    height: 55.5vh;
-    width: 500px;
-    background-color: #F8EDEC;
-}
-
 /* end masuk */
 
 /* tentang-kami */
 
 #tentang-kami .container {
     margin-top: 80px;
-    padding-bottom: 10vh;
+}
+
+#tentang-kami .container .col-md-6{
+    padding: 0;
+}
+
+#tentang-kami .content{
     background-color: #F8EDEC;
     color: #000;
+    padding-bottom: 10vh;
 }
 
 #tentang-kami .text-deskripsi {
-    width: 400px;
     font-size: 16px;
     font-weight: 400;
     text-align: justify;
@@ -215,7 +301,6 @@
 
 #tentang-kami .sosial-media a {
     text-decoration: none;
-    margin: 20px 30px;
     background-color: #C1132F;
     border: 8px solid #C1132F;
     border-radius: 50%;
@@ -233,3 +318,10 @@
 }
 
 /* end tentang-kami */
+
+/* riwayat pembayaran */
+#riwayat-pembayaran .content {
+    background-color: #F8EDEC;
+    color: #000;
+}
+/* end riwayat pembayaran */

@@ -8,6 +8,6 @@
     <br>
     <br>
 <div>
-    <a href="{{ route('front.proses_login') }}"
+    <a href="{{ route('proses_login') }}"
         style="display: inline-block; background-color: red; color: white; padding: 10px 10px; text-align: center; text-decoration: none; border-radius: 5px; margin-top: 10px; margin-bottom: 10px;">Login</a>
 </div>

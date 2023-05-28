@@ -1,7 +1,5 @@
-
     @foreach ($user as $user)
         @isset($user->id)
-
             <!-- Modal Delete -->
             <div class="modal fade" id="delete-modal-{{ $user->id }}" tabindex="-1"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
