@@ -15,7 +15,6 @@
                             <img src="{{ asset('front/img/hero/blank-profile-picture.webp') }}" class="rounded-circle" width="150px" height="150px"
                                 alt="">
                         @endif
-
                     </div>
                     <div class="d-flex justify-content-center pt-3">
                         <h4 class="text-uppercase">{{ Auth::user()->nama }}</h4>
