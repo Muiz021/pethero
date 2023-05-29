@@ -14,15 +14,33 @@
                         @csrf
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Nama</label>
-                            <input type="text" class="form-control " name="nama">
+                            <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{old('nama')}}">
+                            @error('nama')
+                            <div class="invalid-feedback">
+                                <i class="bi bi-exclamation-circle-fill"></i>
+                                {{ $message }}
+                            </div>
+                        @enderror
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Nomor Ponsel</label>
-                            <input type="text" class="form-control " name="nomor_ponsel">
+                            <input type="text" class="form-control @error('nomor_ponsel') is-invalid @enderror" name="nomor_ponsel" value="{{old('nomor_ponsel')}}">
+                            @error('nomor_ponsel')
+                            <div class="invalid-feedback">
+                                <i class="bi bi-exclamation-circle-fill"></i>
+                                {{ $message }}
+                            </div>
+                        @enderror
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email">
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('email')}}">
+                            @error('email')
+                            <div class="invalid-feedback">
+                                <i class="bi bi-exclamation-circle-fill"></i>
+                                {{ $message }}
+                            </div>
+                        @enderror
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Password</label>
