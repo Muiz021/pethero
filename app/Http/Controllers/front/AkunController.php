@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\DetailLokasi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\front\DaftarRequest;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -66,7 +67,7 @@ class AkunController extends Controller
         return redirect()->route('front.akun');
     }
 
-    public function proses_daftar(Request $request)
+    public function proses_daftar(DaftarRequest $request)
     {
         $akun = new User();
         $akun->nama = $request->nama;

@@ -18,8 +18,13 @@
                         <div class="card mx-lg-4 mx-3">
                             <div class="d-flex justify-content-between align-items-center mx-lg-2 px-lg-5 mx-2 my-lg-3 my-3">
                                 <a href="{{ route('front.edit', $akun->slug) }}">
+                                    @if ($akun->gambar != null)
                                     <img src="{{ asset('images/' . $akun->gambar) }}" class="rounded-circle"
                                         alt="">
+                                        @else
+                                        <img src="{{ asset('front/img/hero/blank-profile-picture.webp') }}" class="rounded-circle"
+                                            alt="">
+                                    @endif
                                 </a>
                                 <div class="text-profil">
                                     <h3 class="text-uppercase">{{ $akun->nama }}</h3>
