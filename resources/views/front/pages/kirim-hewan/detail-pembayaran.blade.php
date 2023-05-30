@@ -1,4 +1,4 @@
-@extends('Front.base')
+@extends('front.base')
 
 @section('content')
 @section('title', 'Detail Pembayaran')

@@ -1,0 +1,29 @@
+@extends('front.base')
+@section('content')
+@section('title', 'Daftar')
+
+<section id="daftar">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-sm-12">
+                <div class="content">
+                    <div class="d-flex justify-content-start ms-3 pt-5">
+                        <h3>Mulailah Transaksi Anda!</h3>
+                    </div>
+                    <form class="form mx-3 mt-3" action="{{route('front.proses_daftar')}}>
+                        @csrf
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Nama</labe>
+                            <input type="text" class="form-control " name="nama">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Nomor Pons>
+                            <input type="text" class="form-control " name="nomor_ponsel">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</lab>
+                            <input type="email" class="form-control" name="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Password</>
+                            <input type="p

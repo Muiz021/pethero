@@ -1,4 +1,4 @@
-@extends('Front.base')
+@extends('front.base')
 @section('content')
 @section('title', 'Edit Profil')
 
@@ -8,8 +8,13 @@
             <div class="col-md-6 col-sm-12">
                 <div class="content">
                     <div class="d-flex justify-content-center pt-5">
+			  @if ($akun->gambar != null)
                         <img src="{{ asset('images/' . $akun->gambar) }}" class="rounded-circle" width="150px" height="150px"
                             alt="">
+                            @else
+                            <img src="{{ asset('front/img/hero/blank-profile-picture.webp') }}" class="rounded-circle" width="150px" height="150px"
+                                alt="">
+                        @endif
                     </div>
                     <div class="d-flex justify-content-center pt-3">
                         <h4 class="text-uppercase">{{ Auth::user()->nama }}</h4>

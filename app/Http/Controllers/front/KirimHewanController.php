@@ -19,7 +19,7 @@ class KirimHewanController extends Controller
 {
     public function detail_pengirim1()
     {
-        return view('Front.pages.kirim-hewan.detail-pengirim-1');
+        return view('front.pages.kirim-hewan.detail-pengirim-1');
     }
 
     public function detail_pengirim2(Request $request)
@@ -27,13 +27,13 @@ class KirimHewanController extends Controller
         $lokasi = Lokasi::get();
         $nama_pengirim = $request->nama_pengirim;
         $tanggal = $request->tanggal;
-        return view('Front.pages.kirim-hewan.detail-pengirim-2', compact('lokasi', 'nama_pengirim', 'tanggal'));
+        return view('front.pages.kirim-hewan.detail-pengirim-2', compact('lokasi', 'nama_pengirim', 'tanggal'));
     }
 
     public function detail_alamat()
     {
         $user = Auth::user();
-        return view('Front.pages.kirim-hewan.detail-alamat', compact('user'));
+        return view('front.pages.kirim-hewan.detail-alamat', compact('user'));
     }
 
     public function store(KirimHewanRequest $request)
