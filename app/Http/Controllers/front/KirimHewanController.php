@@ -140,7 +140,8 @@ class KirimHewanController extends Controller
 
     public function detail_pembayaran($id)
     {
-        $kirim_hewan = KirimHewan::where('id', $id)->first();
+        $user = Auth::user();
+        $kirim_hewan = KirimHewan::where('id', $id)->where('id_user',$user->id)->first();
         $lokasi = DetailLokasi::where('id', $kirim_hewan->id_detail_lokasi)->first();
         return view('front.pages.kirim-hewan.detail-pembayaran', ['kirim_hewan' => $kirim_hewan, 'lokasi' => $lokasi]);
     }

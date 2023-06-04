@@ -79,7 +79,7 @@
                                 <img src="{{ asset('front/img/menu/menu-1.png') }}" width="100%" alt="">
                             </a>
                             @else
-                            <a href="#" onclick="return confirm('Silahkan Login Terlebih Dahulu');" class="my-2">
+                            <a href="{{route('masuk')}}" onclick="return confirm('Silahkan Login Terlebih Dahulu');" class="my-2">
                                 <img src="{{ asset('front/img/menu/menu-1.png') }}" width="100%" alt="">
                             </a>
 
