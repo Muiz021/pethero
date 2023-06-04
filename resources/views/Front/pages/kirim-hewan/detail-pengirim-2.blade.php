@@ -62,11 +62,11 @@
                                     name="jenis_pengiriman">
                                     <option value="" selected>Silahkan Pilih</option>
                                     <option value="1" {{ old('jenis_pengiriman') == 1 ? 'selected' : '' }}>Regular
-                                        (5000)</option>
+                                        (Rp.5000,00) [5 Hari]</option>
                                     <option value="2" {{ old('jenis_pengiriman') == 2 ? 'selected' : '' }}>Instant
-                                        (10000)</option>
+                                        (Rp.10000,00) [1-2 Hari]</option>
                                     <option value="3" {{ old('jenis_pengiriman') == 3 ? 'selected' : '' }}>Urgent
-                                        (15000)</option>
+                                        (Rp.15000,00) [1-5 Jam]</option>
                                 </select>
                                 @error('jenis_pengiriman')
                                     <div class="invalid-feedback">
@@ -80,13 +80,14 @@
                                 <select class="form-select  @error('jenis_asuransi') is-invalid @enderror"
                                     name="jenis_asuransi">
                                     <option value="" selected>Silahkan Pilih</option>
-                                    <option value="1" {{ old('jenis_asuransi') == 1 ? 'selected' : '' }}>Hewan
+                                    <option value="1" {{ old('jenis_asuransi') == 1 ? 'selected' : '' }}>Tanpa asuransi</option>
+                                    <option value="2" {{ old('jenis_asuransi') == 2 ? 'selected' : '' }}>Hewan
                                         lepas atau kabur (10000)</option>
-                                    <option value="2" {{ old('jenis_asuransi') == 2 ? 'selected' : '' }}>Pencurian
+                                    <option value="3" {{ old('jenis_asuransi') == 3 ? 'selected' : '' }}>Pencurian
                                         hewan (5000)</option>
-                                    <option value="3" {{ old('jenis_asuransi') == 3 ? 'selected' : '' }}>Kecelakaan
+                                    <option value="4" {{ old('jenis_asuransi') == 4 ? 'selected' : '' }}>Kecelakaan
                                         diri (10000)</option>
-                                    <option value="4" {{ old('jenis_asuransi') == 4 ? 'selected' : '' }}>Jaminan
+                                    <option value="5" {{ old('jenis_asuransi') == 5 ? 'selected' : '' }}>Jaminan
                                         kesehatan (5000)</option>
                                 </select>
                                 @error('jenis_asuransi')
