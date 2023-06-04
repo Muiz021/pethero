@@ -1,4 +1,4 @@
-@extends('front.base')
+@extends('Front.base')
 @section('content')
 @section('title', 'Home')
 
@@ -102,4 +102,6 @@
         </div>
     </div>
 </section>
+
 @endsection
+

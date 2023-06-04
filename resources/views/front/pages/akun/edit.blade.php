@@ -8,11 +8,7 @@
             <div class="col-md-6 col-sm-12">
                 <div class="content">
                     <div class="d-flex justify-content-center pt-5">
-<<<<<<< HEAD:resources/views/front/pages/akun/edit.blade.php
-			  @if ($akun->gambar != null)
-=======
                         @if ($akun->gambar != null)
->>>>>>> 23aa996707d309309b575140e41343e05e25a921:resources/views/Front/pages/akun/edit.blade.php
                         <img src="{{ asset('images/' . $akun->gambar) }}" class="rounded-circle" width="150px" height="150px"
                             alt="">
                             @else
