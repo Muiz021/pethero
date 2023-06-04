@@ -19,21 +19,21 @@ class AkunController extends Controller
     {
         if (Auth::user()) {
             $akun = User::where('password',Auth::user()->password)->first();
-            return view('Front.pages.akun.index',['akun' => $akun]);
+            return view('front.pages.akun.index',['akun' => $akun]);
         }else{
-            return view('Front.pages.akun.index');
+            return view('front.pages.akun.index');
         }
     }
 
     public function daftar()
     {
-        return view('Front.pages.akun.daftar');
+        return view('front.pages.akun.daftar');
     }
 
     public function edit($slug)
     {
         $akun = User::where('slug',$slug)->first();
-        return view('Front.pages.akun.edit',['akun' => $akun]);
+        return view('front.pages.akun.edit',['akun' => $akun]);
     }
 
     public function update(Request $request, $slug)
@@ -83,12 +83,12 @@ class AkunController extends Controller
 
     public function masuk()
     {
-        return view('Front.pages.akun.masuk');
+        return view('front.pages.akun.masuk');
     }
 
     public function tentang_kami()
     {
-        return view('Front.pages.akun.tentang-kami');
+        return view('front.pages.akun.tentang-kami');
     }
 
     public function riwayat_pengiriman()
