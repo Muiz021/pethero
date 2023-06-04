@@ -81,28 +81,36 @@ class KirimHewanController extends Controller
             ]);
         }
 
+
         if ($request->jenis_asuransi == 1) {
+            $jenis_asuransi->update([
+                "id_kirim_hewan" => $kirim_hewan->id,
+                "nama" => "tanpa asuransi",
+                "harga" => 0
+            ]);
+        } else
+        if ($request->jenis_asuransi == 2) {
             $jenis_asuransi->update([
                 "id_kirim_hewan" => $kirim_hewan->id,
                 "nama" => "hewan lepas atau kabur",
                 "harga" => 10000
             ]);
         } else
-        if ($request->jenis_asuransi == 2) {
+        if ($request->jenis_asuransi == 3) {
             $jenis_asuransi->update([
                 "id_kirim_hewan" => $kirim_hewan->id,
                 "nama" => "pencurian hewan",
                 "harga" => 5000
             ]);
         } else
-        if ($request->jenis_asuransi == 3 ) {
+        if ($request->jenis_asuransi == 4 ) {
             $jenis_asuransi->update([
                 "id_kirim_hewan" => $kirim_hewan->id,
                 "nama" => "kecelakaan diri",
                 "harga" => 10000
             ]);
         } else
-        if ($request->jenis_asuransi == 4 ) {
+        if ($request->jenis_asuransi == 5 ) {
             $jenis_asuransi->update([
                 "id_kirim_hewan" => $kirim_hewan->id,
                 "nama" => "jaminan kesehatan",
