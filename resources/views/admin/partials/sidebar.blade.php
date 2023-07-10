@@ -25,10 +25,22 @@
             <span class="menu-header-text">Master Data</span>
         </li>
         <li class="menu-item {{ request()->is('admin/kirim-hewan*') ? 'active' : '' }}">
-            <a href="{{route('kirim-hewan.index')}}" class="menu-link">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='menu-icon bx bxs-data'></i>
-                <div>Kirim Hewan</div>
+                <div data-i18n="Account Settings">Kirim Hewan</div>
             </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->is('admin/kirim-hewan/konfirmasi-pembayaran*') ? 'active' : '' }}">
+                    <a href="{{route('konfirmasi-pembayaran.index')}}" class="menu-link">
+                      <div>Konfirmasi Pembayaran</div>
+                  </a>
+                </li>
+                <li class="menu-item {{ request()->is('admin/kirim-hewan/berhasil*') ? 'active' : '' }}">
+                    <a href="{{route('berhasil.index')}}" class="menu-link">
+                      <div>Kirim Hewan</div>
+                  </a>
+                </li>
+              </ul>
         </li>
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">User</span>
@@ -37,6 +49,12 @@
             <a href="{{route('user.index')}}" class="menu-link">
                 <i class='menu-icon bx bxs-user-circle'></i>
                 <div>Member</div>
+            </a>
+        </li>
+        <li class="menu-item {{ request()->is('admin/kurir*') ? 'active' : '' }}">
+            <a href="{{route('kurir.index')}}" class="menu-link">
+                <i class='menu-icon bx bxs-user-circle'></i>
+                <div>kurir</div>
             </a>
         </li>
     </ul>

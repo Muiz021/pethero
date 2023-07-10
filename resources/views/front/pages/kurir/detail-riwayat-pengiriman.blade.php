@@ -1,7 +1,7 @@
 @extends('front.base')
 
 @section('content')
-@section('title', 'Detail Pembayaran')
+@section('title', 'Detail Transaksi')
 {{-- sweetalert --}}
 @include('sweetalert::alert')
 {{-- end sweetalert --}}
@@ -43,7 +43,7 @@
             <div class="col-md-6 col-sm-12" style="padding: 0;">
                 <div class="content">
                     <div class="card mx-4 px-3">
-                        <h2 class="text-center text-uppercase mb-4">Detail Pembayaran</h2>
+                        <h2 class="text-center text-uppercase mb-4">Detail Transaksi</h2>
                         <div class="d-flex justify-content-between mt-3">
                             <span>Tanggal Transaksi</span>
                             <span><b>{{ Carbon::parse($kirim_hewan->created_at)->isoFormat('dddd, D MMMM YYYY') }}</b></span>
@@ -51,30 +51,6 @@
                         <div class="d-flex justify-content-between">
                             <span>Kategori Produk</span>
                             <span><b>Kirim Hewan</b></span>
-                        </div>
-                        <img src="{{ asset('front/img/partials/partial-7.png') }}" class="my-2" alt="">
-                        <div class="d-flex justify-content-start">
-                            <span><b>Detail Pengiriman</b></span>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span class="w-50">Nama Kurir</span>
-                            <span class="w-50"><b>{{ $kirim_hewan->nama_pengirim }}</b></span>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span class="w-50">Deskripsi Pengirim</span>
-                            <span class="w-50"><b>{{ $kirim_hewan->deskripsi_hewan }}</b></span>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span class="w-50">Jenis Kadang</span>
-                            <span class="w-50"><b>{{ $kirim_hewan->jenis_kandang->nama }}</b></span>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span class="w-50">Jenis Pengiriman</span>
-                            <span class="w-50"><b>{{ $kirim_hewan->jenis_pengiriman->nama }}</b></span>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span class="w-50">Jenis Asuransi</span>
-                            <span class="w-50"><b>{{ $kirim_hewan->jenis_asuransi->nama }}</b></span>
                         </div>
                         <img src="{{ asset('front/img/partials/partial-7.png') }}" class="my-2" alt="">
                         <div class="d-flex justify-content-start">
@@ -107,56 +83,75 @@
                         </div>
                         <img src="{{ asset('front/img/partials/partial-7.png') }}" class="my-2" alt="">
                         <div class="d-flex justify-content-start">
-                            <span><b>Rincian Pembayaran</b></span>
+                            <span><b>Detail Pengiriman</b></span>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <span>Status Pembayaran</span>
-                            <div class="status">
-                                @if ($kirim_hewan->status_pembayaran == 'false')
-                                    <span class="text-warning"><b>Transaksi Diproses</b></span>
-                                @else
-                                    <span class="text-success"><b>Transaksi Berhasil</b></span>
-                                @endif
-                            </div>
+                            <span class="w-50">Nama Kurir</span>
+                            <span class="w-50"><b>{{ $kirim_hewan->nama_pengirim }}</b></span>
                         </div>
-                        <form action="{{ route('front.update-metode-pembayaran', $kirim_hewan->id) }}" method="POST">
-                            @csrf
-                            @method('put')
+                        <div class="d-flex justify-content-between">
+                            <span class="w-50">Deskripsi Pengirim</span>
+                            <span class="w-50"><b>{{ $kirim_hewan->deskripsi_hewan }}</b></span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span class="w-50">Jenis Kadang</span>
+                            <span class="w-50"><b>{{ $kirim_hewan->jenis_kandang->nama }}</b></span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span class="w-50">Jenis Pengiriman</span>
+                            <span class="w-50"><b>{{ $kirim_hewan->jenis_pengiriman->nama }}</b></span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span class="w-50">Jenis Asuransi</span>
+                            <span class="w-50"><b>{{ $kirim_hewan->jenis_asuransi->nama }}</b></span>
+                        </div>
+                        <img src="{{ asset('front/img/partials/partial-7.png') }}" class="my-2" alt="">
+                        @if ($kirim_hewan->status_pengiriman == 'true')
                             <div class="d-flex justify-content-between">
-                                <span>Metode Pembayaran</span>
-                                <div class="mb-3">
-                                    <select class="form-select" name="metode_pembayaran">
-                                        <option value="" selected>Silahkan Pilih</option>
-                                        <option value="bni"
-                                            {{ old('metode_pembayaran') == 'bni' ? 'selected' : '' }}>
-                                            Bank BNI
-                                        </option>
-                                        <option value="gopay"
-                                            {{ old('metode_pembayaran') == 'gopay' ? 'selected' : '' }}>
-                                            Gopay
-                                        </option>
-                                    </select>
-                                    @error('metode_pembayaran')
-                                        <div class="invalid-feedback">
-                                            <i class="bi bi-exclamation-circle-fill"></i>
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <span>Total Pembayaran</span>
-                                <span><b>Rp.{{ number_format($kirim_hewan->jenis_pengiriman->harga + $kirim_hewan->jenis_asuransi->harga, 0, ',', '.') }}</b></span>
+                                <span class="w-50">Status pengiriman</span>
+                                <span><b class="text-success">Berhasil</b></span>
                             </div>
                             <div class="d-flex justify-content-end my-3">
-                                <button class="btn btn-danger" style="width: 100px; border-radius:5px;">Bayar</button>
+                                <a href="{{ route('riwayat_pengiriman_kurir') }}" class="btn btn-danger"
+                                    style="width: 100px; border-radius:5px;">Riwayat</a>
                             </div>
-                        </form>
+                        @else
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="w-50">Status pengiriman</span>
+                                <form action="{{ route('update-status-pengiriman', $kirim_hewan->id) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('put')
+                                    <div class="d-flex justify-content-between">
+                                        <div class="mb-3">
+                                            <select class="form-select" name="status_pengiriman">
+                                                <option value="" selected>Silahkan Pilih</option>
+                                                <option value="false" {{ $kirim_hewan == 'false' ? 'selected' : '' }}>
+                                                    Proses
+                                                </option>
+                                                <option value="true" {{ $kirim_hewan == 'true' ? 'selected' : '' }}>
+                                                    Berhasil
+                                                </option>
+                                            </select>
+                                            @error('status_pengiriman')
+                                                <div class="invalid-feedback">
+                                                    <i class="bi bi-exclamation-circle-fill"></i>
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end my-3">
+                                        <button class="btn btn-danger"
+                                            style="width: 100px; border-radius:5px;">Kirim</button>
+                                    </div>
+                                </form>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 @endsection

@@ -7,13 +7,9 @@
 @endpush
 
 @section('content')
-@section('title', 'Kirim Hewan')
-
-{{-- sweetalert --}}
-@include('sweetalert::alert')
-{{-- end sweetalert --}}
+@section('title', 'Kurir')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4">Kirim Hewan</h4>
+    <h4 class="fw-bold py-3 mb-4">Kurir</h4>
 
     <div class="card">
         <div class="card-header flex-column flex-md-row">
@@ -22,40 +18,29 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama Pengirim</th>
-                            <th>tanggal</th>
-                            <th>status</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Role</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($kirim_hewan as $item)
+                        @foreach ($kurir as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->nama_pengirim }}</td>
-                                <td>{{ $item->tanggal }}</td>
-                                <td>
-                                    @if ($item->status == "true" )
-                                    <div class="bg-success" style="border-radius: 10px;width:100px">
-                                        <p class="my-1 mx-3 text-white"><b>Berhasil</b></p>
-                                    </div>
-                                    @else
-                                    <div class="bg-warning" style="border-radius: 10px;width:100px">
-                                        <p class="my-1 mx-3 text-white"><b>Proses</b></p>
-                                    </div>
-                                    @endif
-
-                                </td>
+                                <td>{{ $item->nama }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->roles }}</td>
                                 <td>
                                     <button class="btn btn-danger btn-sm" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#delete-modal-{{ $item->id }}"><span><i
-                                            class="bx bx-trash me-sm-2"></i> <span
-                                            class="d-none d-sm-inline-block">Hapus</span></span>
-                                </button>
+                                        data-bs-target="#delete-modal-{{ $item->id }}"><span><i
+                                                class="bx bx-trash me-sm-2"></i> <span
+                                                class="d-none d-sm-inline-block">Delete</span></span>
+                                    </button>
 
-                                    <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#edit-modal-{{ $item->id }}"><span><i class='bx bxs-edit me-sm-2'></i> <span
-                                            class="d-none d-sm-inline-block">Perbarui</span></span>
+                                    <button class="btn btn-info btn-sm" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#edit-modal-{{ $item->id }}"><span><i class='bx bxs-info-circle me-sm-2'></i><span
+                                            class="d-none d-sm-inline-block">View</span></span>
                                 </button>
                                 </td>
                             </tr>
@@ -64,7 +49,7 @@
                 </table>
             </div>
         </div>
-        @include('admin.pages.kirim-hewan.modal')
+        @include('admin.pages.kurir.modal')
     </div>
 </div>
 @endsection

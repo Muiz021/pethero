@@ -107,7 +107,7 @@
 #daftar .content {
     background-color: #F8EDEC;
     color: #000;
-    height: 90vh;
+    height: 100%;
 }
 
 #daftar .form-label {

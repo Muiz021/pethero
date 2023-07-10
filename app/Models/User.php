@@ -19,11 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -50,6 +46,16 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(KirimHewan::class,'id_user','id');
 
+    }
+    public function kirim_hewan2()
+    {
+        return $this->hasMany(KirimHewan::class,'id_kurir','id');
+
+    }
+
+    public function lokasi()
+    {
+        return $this->hasMany(Lokasi::class,'id_user','id');
     }
 
     public function detail_lokasi()

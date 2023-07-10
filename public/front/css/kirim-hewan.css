@@ -50,6 +50,12 @@
     border-radius: 25px;
 }
 
+#detail-kirim-hewan .alamat a{
+    color: #CF203F;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 #detail-kirim-hewan-2 .content {
     background-color: #F8EDEC;
 }

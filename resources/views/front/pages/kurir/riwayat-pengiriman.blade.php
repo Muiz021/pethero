@@ -12,7 +12,7 @@
             <div class="col-md-6 col-sm-12" style="padding:0;">
                 <div class="content py-5">
                     @foreach ($data as $item)
-                        <a href="{{ route('front.detail-pembayaran', $item->id) }}" class="text-decoration-none ">
+                        <a href="{{route('kurir.detail-kirim-hewan',$item->id)}}" class="text-decoration-none ">
                             <div class="card mx-3 my-4 py-2 px-3">
                                 <div class="d-flex justify-content-between">
                                     <div class="driver">
@@ -65,7 +65,7 @@
                                     <p><b>Rp.{{ number_format($item->jenis_asuransi->harga, 0, ',', '.') }}</b></p>
                                 </div>
                                 <div class="d-flex justify-content-between mt-2">
-                                    @if ($item->status_pengiriman == 'false')
+                                    @if ($item->status == 'false')
                                         <div class="bg-warning" style="border-radius: 10px">
                                             <p class="my-1 mx-3 text-white"><b>Proses</b></p>
                                         </div>
@@ -89,7 +89,5 @@
             </div>
         </div>
     </div>
-
 </section>
-
 @endsection

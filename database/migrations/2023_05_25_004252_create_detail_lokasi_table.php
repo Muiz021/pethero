@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('label_alamat', 100);
             $table->longText('alamat');
-            $table->string('catatan_driver');
+            $table->string('catatan_driver')->nullable();
             $table->string('nama_penerimaan');
             $table->string('nomor_ponsel');
             $table->timestamps();

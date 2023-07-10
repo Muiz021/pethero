@@ -22,13 +22,22 @@ class AuthController extends Controller
             if (Auth::user()->roles == 'member') {
                 Alert::success(Auth::user()->nama, "Kamu berhasil login");
                 return redirect()->route('front.akun');
-            }else
-            if(Auth::user()->roles == 'admin'){
+            } else
+            if (Auth::user()->roles == 'admin') {
                 Alert::success(Auth::user()->nama, "Kamu berhasil login");
                 return redirect()->route('dashboard');
+            } else
+            if (Auth::user()->roles == 'kurir') {
+                if (Auth::user()->status == 'diterima') {
+                    Alert::success(Auth::user()->nama, "Kamu berhasil login");
+                    return redirect()->route('front.akun');
+                } else {
+                    Alert::error('Maaf', "Silahkan tunggu sampai ada verifikasi email yang dikirimkan");
+                    return redirect()->back();
+                }
             }
-        }else {
-            Alert::error( "Gagal","Email atau Password Salah");
+        } else {
+            Alert::error("Gagal", "Email atau Password Salah");
             return redirect()->back();
         }
     }
@@ -37,7 +46,7 @@ class AuthController extends Controller
     {
         $request->session()->flush();
         Auth::logout();
-        Alert::success("Berhasil","Kamu berhasil Logout");
+        Alert::success("Berhasil", "Kamu berhasil Logout");
         return Redirect()->route('front.akun');
     }
 }

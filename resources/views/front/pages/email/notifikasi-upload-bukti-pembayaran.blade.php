@@ -1,9 +1,9 @@
 <div>
-    Ada Transaksi Dari {{ $nama_pelanggan }} Dengan Email {{ $email_pelanggan }}, Silahkan Tunggu Pembayarannya.
+    Pembayaran Atas Nama {{ $nama_pelanggan }} Dengan Email {{ $email_pelanggan }} Telah Mengirim Bukti Pembayaran, Silahkan Ubah Status Pembayaran.
     <br>
     <br>
     <br>
-    Login Dengan Akun Admin Untuk Mengkonfirmasi Pembayaran.
+    Login Dengan Akun Admin Untuk Mengubah Status Pembayaran.
 </div>
     <br>
     <br>

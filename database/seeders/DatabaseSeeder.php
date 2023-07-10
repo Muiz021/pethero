@@ -33,5 +33,14 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('12345678'),
             'roles' => 'admin',
         ]);
+
+        User::create([
+            'nama' => 'Nabilah',
+            'email' => 'nabilah22331@gmail.com',
+            'slug' => Str::slug('Nabilah Faqitah Masyorah', '-'),
+            'nomor_ponsel' => '08123543245',
+            'password' => bcrypt('12345678'),
+            'roles' => 'kurir',
+        ]);
     }
 }

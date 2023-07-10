@@ -116,39 +116,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Lokasi</label>
-                                <select class="form-select  @error('lokasi') is-invalid @enderror" name="lokasi">
-                                    <option value="" selected>Silahkan</option>
-                                    @foreach ($lokasi as $item)
-                                        <option value="{{ $item->id }}"
-                                            {{ old('lokasi') == $item->id ? 'selected' : '' }}>
-                                            {{ Str::limit($item->alamat, 50) }}</option>
-                                    @endforeach
-                                </select>
-                                @error('lokasi')
-                                    <div class="invalid-feedback">
-                                        <i class="bi bi-exclamation-circle-fill"></i>
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                               <input type="text" class="form-control bg-light" value="{{$lokasi->alamat}}" disabled>
                             </div>
-
-                            <div class="mb-3">
-                                <div class="form-control pt-3">
-                                    <a href="{{ route('front.detail-alamat') }}"
-                                        class="tambah-lokasi  d-flex justify-content-start">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                            fill="currentColor" class="bi bi-plus-circle me-3" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                            <path
-                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                        </svg>
-                                        <p>Tambah Alamat Pengiriman?</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <input type="hidden" class="form-control" id="nama_pengirim" name="nama_pengirim"
-                                value="{{ $nama_pengirim }}">
+                            <input type="hidden" class="form-control" id="lokasi" name="lokasi" value="{{$lokasi->id}}">
+                            <input type="hidden" class="form-control" id="id_kurir" name="id_kurir"
+                                value="{{ $id_kurir }}">
                             <input type="hidden" class="form-control" id="tanggal" name="tanggal"
                                 value="{{ $tanggal }}">
 

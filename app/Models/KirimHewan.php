@@ -37,4 +37,9 @@ class KirimHewan extends Model
     {
         return $this->belongsTo(User::class,'id','id_user');
     }
+
+    public function kurir()
+    {
+        return $this->belongsTo(User::class,'id','id_kurir');
+    }
 }

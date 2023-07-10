@@ -26,7 +26,6 @@ class KirimHewanRequest extends FormRequest
             'jenis_pengiriman' => 'required',
             'jenis_asuransi' => 'required',
             'jenis_kandang' => 'required',
-            'lokasi' => 'required',
         ];
     }
 
@@ -37,7 +36,6 @@ class KirimHewanRequest extends FormRequest
         'jenis_pengiriman.required' => 'jenis pengiriman tidak boleh kosong',
         'jenis_asuransi.required' => 'jenis asuransi tidak boleh kosong',
         'jenis_kandang.required' => 'jenis kandang tidak boleh kosong',
-        'lokasi.required' => 'lokasi tidak boleh kosong',
        ];
     }
 }

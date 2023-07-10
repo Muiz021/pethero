@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\front;
 
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Lokasi;
 use App\Models\KirimHewan;
+use Illuminate\Support\Str;
 use App\Models\DetailLokasi;
 use App\Models\JenisKandang;
 use Illuminate\Http\Request;
@@ -17,24 +20,30 @@ use App\Http\Requests\front\KirimHewanRequest;
 
 class KirimHewanController extends Controller
 {
+    ###member###
     public function detail_pengirim1()
     {
-        return view('front.pages.kirim-hewan.detail-pengirim-1');
+        $kurir = User::where('roles','kurir')->where('status','diterima')->get();
+        $lokasi = Lokasi::get();
+        return view('front.pages.kirim-hewan.detail-pengirim-1',['kurir' => $kurir,'lokasi' => $lokasi]);
     }
 
     public function detail_pengirim2(Request $request)
     {
-        $lokasi = Lokasi::get();
-        $nama_pengirim = $request->nama_pengirim;
-        $tanggal = $request->tanggal;
-        return view('front.pages.kirim-hewan.detail-pengirim-2', compact('lokasi', 'nama_pengirim', 'tanggal'));
+        $user = Auth::user();
+        $lokasi = Lokasi::where('status',true)->first();
+        $id_kurir = $request->id_kurir;
+        $tanggal = $request->tanggal;;
+        return view('front.pages.kirim-hewan.detail-pengirim-2', compact('lokasi', 'id_kurir', 'tanggal',));
     }
 
+    ##alamat##
     public function detail_alamat()
     {
         $user = Auth::user();
         return view('front.pages.kirim-hewan.detail-alamat', compact('user'));
     }
+    ##end alamat##
 
     public function store(KirimHewanRequest $request)
     {
@@ -49,12 +58,15 @@ class KirimHewanController extends Controller
             'nomor_ponsel' => $lokasi->nomor_ponsel,
         ]);
 
+        $kurir = User::where('id',$request->id_kurir)->first();
+        $id_detail_lokasi = $detail_lokasi->id;
         $kirim_hewan = KirimHewan::create([
-            "id_detail_lokasi" => $detail_lokasi->id,
-            "nama_pengirim" => $request->nama_pengirim,
+            "id_detail_lokasi" => $id_detail_lokasi,
+            "id_kurir" => $kurir->id,
+            "id_user" => Auth::user()->id,
+            "nama_pengirim" => $kurir->nama,
             "deskripsi_hewan" => $request->deskripsi_hewan,
             "tanggal" => $request->tanggal,
-            "id_user" => Auth::user()->id
         ]);
 
         $jenis_pengirim = JenisPengiriman::create();
@@ -137,15 +149,10 @@ class KirimHewanController extends Controller
             $message->subject('Pemberitahuan Transaksi');
         });
 
-        Mail::send('front.pages.email.notifikasi-user', ['data' => $kirim_hewan], function ($message) {
-            $message->to(Auth::user()->email);
-            $message->subject('Transaksi');
-        });
-
-        Alert::success(Auth::user()->nama, "Ada Pesan Ke Email Kamu");
         return redirect('detail/pembayaran/'.$kirim_hewan->id);
     }
 
+    ##pembayaran
     public function detail_pembayaran($id)
     {
         $user = Auth::user();
@@ -153,5 +160,76 @@ class KirimHewanController extends Controller
         $lokasi = DetailLokasi::where('id', $kirim_hewan->id_detail_lokasi)->first();
         return view('front.pages.kirim-hewan.detail-pembayaran', ['kirim_hewan' => $kirim_hewan, 'lokasi' => $lokasi]);
     }
+
+    public function detail_pembayaran_2($id)
+    {
+        $user = Auth::user();
+        $kirim_hewan = KirimHewan::where('id', $id)->where('id_user',$user->id)->first();
+        $lokasi = DetailLokasi::where('id', $kirim_hewan->id_detail_lokasi)->first();
+        return view('front.pages.kirim-hewan.detail-pembayaran-2', ['kirim_hewan' => $kirim_hewan, 'lokasi' => $lokasi]);
+    }
+
+    public function update_metode_pembayaran(Request $request, $id)
+    {
+        $pembayaran = KirimHewan::where('id',$id)->first();
+        $pembayaran->update([
+            'metode_pembayaran' => $request->metode_pembayaran
+        ]);
+        Alert::success(Auth::user()->nama, "Silahkan Upload Struk Pembayaran Anda");
+        return redirect('detail/pembayaran-2/'.$pembayaran->id);
+    }
+
+    public function update_gambar_pembayaran(Request $request, $id)
+    {
+        $pembayaran = KirimHewan::where('id',$id)->first();
+
+        $foto = $request->file('gambar');
+        $destinationPath = 'images/';
+        $baseURL = url('/');
+        $profileImage = $baseURL . "/images/" . 'bukti_pembayaran' . '_'.Str::slug(Auth::user()->nama,'_') . Carbon::now()->format('YmdHis') . "." . $foto->getClientOriginalExtension();
+        $foto->move($destinationPath, $profileImage);
+        $pembayaran->update([
+            'gambar' => $profileImage
+        ]);
+
+        Mail::send('front.pages.email.notifikasi-upload-bukti-pembayaran', ['nama_pelanggan' => Auth::user()->nama, 'email_pelanggan' => Auth::user()->email], function ($message) {
+            $pethero = "petheromakassar@gmail.com";
+            $message->to($pethero);
+            $message->subject('Pemberitahuan Bukti Pembayaran');
+        });
+        Alert::success(Auth::user()->nama, "Terima Kasih Telah Melakukan Transaksi");
+        return redirect('detail/pembayaran-2/'.$pembayaran->id);
+    }
+    ##end pembayaran##
+
+    ###end member###
+
+    ###kurir###
+    public function detail_riwayat_pengiriman($id)
+    {
+        $kurir = Auth::user();
+        $kirim_hewan = KirimHewan::where('id', $id)->where('id_kurir',$kurir->id)->first();
+        $lokasi = DetailLokasi::where('id', $kirim_hewan->id_detail_lokasi)->first();
+        return view('front.pages.kurir.detail-riwayat-pengiriman', ['kirim_hewan' => $kirim_hewan, 'lokasi' => $lokasi]);
+    }
+
+    public function update_status_pengiriman(Request $request,$id)
+    {
+        $kirim_hewan=KirimHewan::where('id',$id)->first();
+        $user = User::where('id',$kirim_hewan->id_user)->first();
+        $kirim_hewan->update([
+            'status_pengiriman' => $request->status_pengiriman
+        ]);
+
+        Mail::send('front.pages.email.notifikasi-pengiriman-hewan', ['nama_pelanggan' => $user->nama, 'email_pelanggan' => $user->email], function ($message) {
+            $pethero = "petheromakassar@gmail.com";
+            $message->to($pethero);
+            $message->subject('Pemberitahuan Pengiriman Hewan');
+        });
+
+        Alert::success("Sukses", "Kamu Berhasil Mengirim Paket");
+        return redirect()->back();
+    }
+    ###end kurir###
 
 }

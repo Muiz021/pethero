@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('kirim_hewan', function (Blueprint $table) {
-            $table->string('status')->nullable()->default('false')->after('deskripsi_hewan');
+            $table->string('status_pembayaran')->nullable()->default('false')->after('deskripsi_hewan');
+            $table->string('status_pengiriman')->nullable()->default('false')->after('status_pembayaran');
         });
     }
 

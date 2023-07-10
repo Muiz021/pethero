@@ -15,6 +15,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class AkunController extends Controller
 {
+    ##umum##
     public function index()
     {
         if (Auth::user()) {
@@ -67,6 +68,39 @@ class AkunController extends Controller
         return redirect()->route('front.akun');
     }
 
+    public function masuk()
+    {
+        return view('front.pages.akun.masuk');
+    }
+
+    public function tentang_kami()
+    {
+        return view('front.pages.akun.tentang-kami');
+    }
+
+    public function riwayat_pengiriman_member()
+    {
+        $user = Auth::user();
+        $data = KirimHewan::where('id_user', $user->id)->get();
+        $lokasi = DetailLokasi::where('id_user',$user->id)->get();
+        return view('front.pages.akun.riwayat-pengiriman',['data' => $data, 'lokasi' => $lokasi]);
+    }
+
+    public function riwayat_pengiriman_kurir()
+    {
+        $user = Auth::user();
+        $kirim_hewan = KirimHewan::where('id_kurir', $user->id)->where('status_pembayaran','true')->get();
+        foreach ($kirim_hewan as $data) {
+            $lokasi = DetailLokasi::where('id',$data->id_detail_lokasi)->get();
+        }
+        return view('front.pages.kurir.riwayat-pengiriman',['data' => $kirim_hewan, 'lokasi' => $lokasi]);
+    }
+    ##end umum##
+
+    ##user##
+    public function daftar_user(){
+        return view('front.pages.akun.daftar-user');
+    }
     public function proses_daftar(DaftarRequest $request)
     {
         $akun = new User();
@@ -80,23 +114,47 @@ class AkunController extends Controller
         Alert::success("Sukses", "Kamu Berhasil Membuat Akun");
         return redirect()->route('masuk');
     }
+    ##end user##
 
-    public function masuk()
+
+    ##kurir##
+    public function daftar_kurir()
     {
-        return view('front.pages.akun.masuk');
+        return view('front.pages.akun.daftar-kurir');
     }
 
-    public function tentang_kami()
+    public function proses_daftar_kurir(Request $request)
     {
-        return view('front.pages.akun.tentang-kami');
+        $foto = $request->file('gambar');
+        $destinationPath = 'images/';
+        $pathURL = url('/');
+        $profileImage = $pathURL .'/images/'. Str::slug($request->nama,'_') . "." . $foto->getClientOriginalExtension();
+        $foto->move($destinationPath, $profileImage);
+
+        $foto_sim_c = $request->file('foto_sim_c');
+        $destinationPath = 'images/';
+        $pathURL = url('/');
+        $namaSimC = $pathURL .'/images/'. Str::slug($request->foto_sim_c->getClientOriginalName(),'_') . "." . $foto_sim_c->getClientOriginalExtension();
+        $foto_sim_c->move($destinationPath, $namaSimC);
+
+        $akun = new User();
+        $akun->nama = $request->nama;
+        $akun->slug = Str::slug($request->nama,'-');
+        $akun->jenis_kelamin = $request->jenis_kelamin;
+        $akun->tempat_lahir = $request->tempat_lahir;
+        $akun->tanggal_lahir = $request->tanggal_lahir;
+        $akun->nomor_ponsel = $request->nomor_ponsel;
+        $akun->status = 'proses';
+        $akun->gambar = $profileImage;
+        $akun->foto_sim_c = $namaSimC;
+        $akun->email = $request->email;
+        $akun->roles = 'kurir';
+        $akun->password = Hash::make($request->password);
+
+        $akun->save();
+        Alert::success("Sukses", "Kamu Berhasil Membuat Akun");
+        return redirect()->route('masuk');
     }
 
-    public function riwayat_pengiriman()
-    {
-        $user = Auth::user();
-        $data = KirimHewan::where('id_user', $user->id)->get();
-        $lokasi = DetailLokasi::where('id_user',$user->id)->get();
-        return view('front.pages.akun.riwayat-pengiriman',['data' => $data, 'lokasi' => $lokasi]);
-    }
 
 }
