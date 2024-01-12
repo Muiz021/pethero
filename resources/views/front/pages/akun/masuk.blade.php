@@ -1,7 +1,9 @@
 @extends('front.base')
+
 @section('content')
 @section('title', 'Masuk')
-    {{-- sweetalert --}}
+
+{{-- sweetalert --}}
     @include('sweetalert::alert')
     {{-- end sweetalert --}}
 

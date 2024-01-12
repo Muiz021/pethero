@@ -85,6 +85,8 @@ Route::namespace('menu untuk kurir')->prefix('kurir')->group(function(){
         Route::get('riwayat-pengiriman',[AkunController::class,'riwayat_pengiriman_kurir'])->name('riwayat_pengiriman_kurir');
         Route::get('detail-riwayat-pengiriman/{id}',[KirimHewanController::class,'detail_riwayat_pengiriman'])->name('kurir.detail-kirim-hewan');
         Route::put('update-status-pengiriman/{id}',[KirimHewanController::class,'update_status_pengiriman'])->name('update-status-pengiriman');
+        Route::get('{slug}/edit',[AkunController::class,'edit_kurir'])->name('edit_kurir');
+        Route::put('{slug}/update',[AkunController::class,'update_kurir'])->name('update_kurir');
     });
 });
 

@@ -19,9 +19,9 @@ class AkunController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            $akun = User::where('password',Auth::user()->password)->first();
-            return view('front.pages.akun.index',['akun' => $akun]);
-        }else{
+            $akun = User::where('password', Auth::user()->password)->first();
+            return view('front.pages.akun.index', ['akun' => $akun]);
+        } else {
             return view('front.pages.akun.index');
         }
     }
@@ -33,22 +33,29 @@ class AkunController extends Controller
 
     public function edit($slug)
     {
-        $akun = User::where('slug',$slug)->first();
-        return view('front.pages.akun.edit',['akun' => $akun]);
+        $akun = User::where('slug', $slug)->first();
+        return view('front.pages.akun.edit', ['akun' => $akun]);
+    }
+
+    public function edit_kurir($slug)
+    {
+
+        $akun = User::where('slug', $slug)->first();
+        return view('front.pages.akun.edit-kurir', ['akun' => $akun]);
     }
 
     public function update(Request $request, $slug)
     {
-        $akun = User::where('slug',$slug)->first();
+        $akun = User::where('slug', $slug)->first();
 
         if ($request->gambar) {
             if ($akun->gambar) {
-                $file_path = public_path().'/images/'.$akun->gambar;
+                $file_path = public_path() . '/images/' . $akun->gambar;
                 unlink($file_path);
             }
 
             $akun->nama = $request->nama;
-            $akun->slug = Str::slug($request->nama,'-');
+            $akun->slug = Str::slug($request->nama, '-');
             $akun->nomor_ponsel = $request->nomor_ponsel;
 
             $foto = $request->file('gambar');
@@ -56,10 +63,10 @@ class AkunController extends Controller
             $profileImage = $akun->slug . "." . $foto->getClientOriginalExtension();
             $foto->move($destinationPath, $profileImage);
             $akun->gambar = $profileImage;
-        }else{
+        } else {
 
             $akun->nama = $request->nama;
-            $akun->slug = Str::slug($request->nama,'-');
+            $akun->slug = Str::slug($request->nama, '-');
             $akun->nomor_ponsel = $request->nomor_ponsel;
         }
 
@@ -67,6 +74,77 @@ class AkunController extends Controller
 
         return redirect()->route('front.akun');
     }
+
+    public function update_kurir(Request $request, $slug)
+    {
+        $data = $request->all();
+        $akun = Auth::user();
+
+        if ($request->gambar && $request->foto_sim_c) {
+            if ($akun->gambar) {
+                $file_path = Str::replace(url('/') . '/images/', '', public_path() . '/images/' . $akun->gambar);
+                unlink($file_path);
+            }
+
+            if ($akun->foto_sim_c) {
+                $file_path = Str::replace(url('/') . '/images/', '', public_path() . '/images/' . $akun->foto_sim_c);
+                unlink($file_path);
+            }
+
+            $foto = $request->file('gambar');
+            $destinationPath = 'images/';
+            $pathURL = url('/');
+            $profileImage = $pathURL . '/images/' . Str::slug($request->nama, '_') . "." . $foto->getClientOriginalExtension();
+            $foto->move($destinationPath, $profileImage);
+            $data['gambar'] = $profileImage;
+
+            $foto_sim_c = $request->file('foto_sim_c');
+            $namaSim = $pathURL . '/images/' . Str::slug($request->nama, '_') . "_foto_sim_c." . $foto_sim_c->getClientOriginalExtension();
+            $foto_sim_c->move($destinationPath, $namaSim);
+            $data['foto_sim_c'] = $namaSim;
+
+            $data['slug'] = Str::slug($data['nama'], '-');
+
+            $akun->update($data);
+        } elseif ($request->gambar) {
+            if ($akun->gambar) {
+                $file_path = Str::replace(url('/') . '/images/', '', public_path() . '/images/' . $akun->gambar);
+                unlink($file_path);
+            }
+
+            $foto = $request->file('gambar');
+            $destinationPath = 'images/';
+            $pathURL = url('/');
+            $profileImage = $pathURL . '/images/' . Str::slug($request->nama, '_') . "." . $foto->getClientOriginalExtension();
+            $foto->move($destinationPath, $profileImage);
+            $data['gambar'] = $profileImage;
+
+            $data['slug'] = Str::slug($data['nama'], '-');
+
+            $akun->update($data);
+        } elseif ($request->foto_sim_c) {
+            if ($akun->foto_sim_c) {
+                $file_path = Str::replace(url('/') . '/images/', '', public_path() . '/images/' . $akun->foto_sim_c);
+                unlink($file_path);
+            }
+
+            $foto_sim_c = $request->file('foto_sim_c');
+            $destinationPath = 'images/';
+            $pathURL = url('/');
+            $namaSim = $pathURL . '/images/' . Str::slug($request->nama, '_') . "_foto_sim_c." . $foto_sim_c->getClientOriginalExtension();
+            $foto_sim_c->move($destinationPath, $namaSim);
+            $data['foto_sim_c'] = $namaSim;
+
+            $data['slug'] = Str::slug($data['nama'], '-');
+            $akun->update($data);
+        }else{
+            $akun->update($data);
+        }
+
+        Alert::success("Sukses", "Kamu berhasil memperbarui akun");
+        return redirect()->back();
+    }
+
 
     public function masuk()
     {
@@ -82,30 +160,31 @@ class AkunController extends Controller
     {
         $user = Auth::user();
         $data = KirimHewan::where('id_user', $user->id)->get();
-        $lokasi = DetailLokasi::where('id_user',$user->id)->get();
-        return view('front.pages.akun.riwayat-pengiriman',['data' => $data, 'lokasi' => $lokasi]);
+        $lokasi = DetailLokasi::where('id_user', $user->id)->get();
+        return view('front.pages.akun.riwayat-pengiriman', ['data' => $data, 'lokasi' => $lokasi]);
     }
 
     public function riwayat_pengiriman_kurir()
     {
         $user = Auth::user();
-        $kirim_hewan = KirimHewan::where('id_kurir', $user->id)->where('status_pembayaran','true')->get();
+        $kirim_hewan = KirimHewan::where('id_kurir', $user->id)->where('status_pembayaran', 'true')->get();
         foreach ($kirim_hewan as $data) {
-            $lokasi = DetailLokasi::where('id',$data->id_detail_lokasi)->get();
+            $lokasi = DetailLokasi::where('id', $data->id_detail_lokasi)->get();
         }
-        return view('front.pages.kurir.riwayat-pengiriman',['data' => $kirim_hewan, 'lokasi' => $lokasi]);
+        return view('front.pages.kurir.riwayat-pengiriman', ['data' => $kirim_hewan, 'lokasi' => $lokasi]);
     }
     ##end umum##
 
     ##user##
-    public function daftar_user(){
+    public function daftar_user()
+    {
         return view('front.pages.akun.daftar-user');
     }
     public function proses_daftar(DaftarRequest $request)
     {
         $akun = new User();
         $akun->nama = $request->nama;
-        $akun->slug = Str::slug($request->nama,'-');
+        $akun->slug = Str::slug($request->nama, '-');
         $akun->nomor_ponsel = $request->nomor_ponsel;
         $akun->email = $request->email;
         $akun->password = Hash::make($request->password);
@@ -128,18 +207,18 @@ class AkunController extends Controller
         $foto = $request->file('gambar');
         $destinationPath = 'images/';
         $pathURL = url('/');
-        $profileImage = $pathURL .'/images/'. Str::slug($request->nama,'_') . "." . $foto->getClientOriginalExtension();
+        $profileImage = $pathURL . '/images/' . Str::slug($request->nama, '_') . "." . $foto->getClientOriginalExtension();
         $foto->move($destinationPath, $profileImage);
 
         $foto_sim_c = $request->file('foto_sim_c');
         $destinationPath = 'images/';
         $pathURL = url('/');
-        $namaSimC = $pathURL .'/images/'. Str::slug($request->foto_sim_c->getClientOriginalName(),'_') . "." . $foto_sim_c->getClientOriginalExtension();
+        $namaSimC = $pathURL . '/images/' . Str::slug($request->foto_sim_c->getClientOriginalName(), '_') . "." . $foto_sim_c->getClientOriginalExtension();
         $foto_sim_c->move($destinationPath, $namaSimC);
 
         $akun = new User();
         $akun->nama = $request->nama;
-        $akun->slug = Str::slug($request->nama,'-');
+        $akun->slug = Str::slug($request->nama, '-');
         $akun->jenis_kelamin = $request->jenis_kelamin;
         $akun->tempat_lahir = $request->tempat_lahir;
         $akun->tanggal_lahir = $request->tanggal_lahir;
@@ -155,6 +234,4 @@ class AkunController extends Controller
         Alert::success("Sukses", "Kamu Berhasil Membuat Akun");
         return redirect()->route('masuk');
     }
-
-
 }

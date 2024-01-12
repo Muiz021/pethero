@@ -206,6 +206,65 @@
 }
 /* end edit */
 
+/* edit kurir */
+#edit-kurir .container {
+    margin-top: 80px;
+}
+
+#edit-kurir .container .col-md-6 {
+    padding: 0;
+}
+
+#edit-kurir .content {
+    background-color: #F8EDEC;
+    color: #000;
+    height: 115vh;
+}
+
+@media screen and (max-width: 600px) {
+    #edit-kurir .content {
+        background-color: #F8EDEC;
+        color: #000;
+        height: 135vh;
+    }
+}
+
+#edit-kurir .form-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #C1132F;
+
+}
+
+#edit-kurir .form-control {
+    background: none;
+    border: none;
+    border-bottom: 2px solid #B9B9BF;
+    border-radius: 0;
+}
+
+#edit-kurir .btn {
+    width: 295px;
+    height: 46px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+#edit-kurir p {
+    font-size: 10px;
+    font-weight: 400;
+}
+
+#edit-kurir p a {
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+    color: #C1132F;
+    margin-left: 2px;
+}
+/* end edit kurir */
+
 /* masuk */
 #masuk .container {
     margin-top: 80px;

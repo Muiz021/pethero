@@ -1,5 +1,14 @@
 @extends('front.base')
 
+@push('style')
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}"></script>
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+</style>
+@endpush
 @section('content')
 @section('title', 'Detail Alamat')
 
@@ -82,6 +91,9 @@
                                     </div>
                                 @enderror
                             </div>
+                            <input id="search-box" type="text" placeholder="Cari alamat atau lokasi">
+                            <div id="map" class="mb-3"></div>
+
                             <div class="mb-3">
                                 <label for="catatan_driver" class="form-label">Catatan untuk driver(opsional)</label>
                                 <input type="text" class="form-control" id="catatan_driver" name="catatan_driver"
@@ -120,3 +132,83 @@
 </section>
 
 @endsection
+
+@push('script')
+
+<script>
+    var currentMarker;
+
+    function initMap() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                const myLatLng = { lat: position.coords.latitude, lng: position.coords.longitude };
+
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    center: myLatLng,
+                    zoom: 13
+                });
+
+                // Tambahkan event listener untuk mendapatkan koordinat saat klik pada peta
+                google.maps.event.addListener(map, 'click', function (event) {
+                    addMarker(event.latLng, map);
+                });
+
+                // Tambahkan event listener untuk menampilkan info window saat marker diklik
+                if (currentMarker) {
+                    currentMarker.addListener('click', function () {
+                        var infoWindow = new google.maps.InfoWindow({
+                            content: 'Latitude: ' + currentMarker.getPosition().lat() + '<br>Longitude: ' + currentMarker.getPosition().lng()
+                        });
+                        infoWindow.open(map, currentMarker);
+                    });
+                }
+
+                // Tambahkan event listener untuk pencarian
+                var searchBox = new google.maps.places.SearchBox(document.getElementById('search-box'));
+
+                google.maps.event.addListener(searchBox, 'places_changed', function () {
+                    var places = searchBox.getPlaces();
+
+                    if (places.length == 0) {
+                        return;
+                    }
+
+                    // Ambil lokasi dari hasil pencarian dan tambahkan marker
+                    var location = places[0].geometry.location;
+                    addMarker(location, map);
+                    map.setCenter(location);
+                });
+            });
+        } else {
+            alert("Geolocation tidak didukung oleh browser ini.");
+        }
+    }
+
+    function addMarker(location, map) {
+        // Hapus marker sebelumnya jika ada
+        if (currentMarker) {
+            currentMarker.setMap(null);
+        }
+
+        currentMarker = new google.maps.Marker({
+            position: location,
+            map: map,
+            title: "Marker Baru"
+        });
+
+        // Tambahkan event listener untuk menampilkan info window saat marker diklik
+        currentMarker.addListener('click', function () {
+            var infoWindow = new google.maps.InfoWindow({
+                content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+            });
+            infoWindow.open(map, currentMarker);
+        });
+    }
+</script>
+
+
+
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap">
+</script>
+@endpush

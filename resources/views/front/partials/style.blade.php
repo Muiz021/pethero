@@ -12,3 +12,20 @@
 <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('front/css/kirim-hewan.css') }}">
 <link rel="stylesheet" href="{{asset('front/css/akun-style.css')}}">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+{{-- leaflet geosearch --}}
+<link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.1.0/dist/geosearch.css" />
+<script src="https://unpkg.com/leaflet-geosearch@3.1.0/dist/geosearch.umd.js"></script>
+{{-- end leaflet geosearch --}}
+
+{{-- leaflet rooting mechine --}}
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+{{-- end leaflet rooting mechine --}}
+
+
+
