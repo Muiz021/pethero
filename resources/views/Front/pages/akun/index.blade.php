@@ -21,7 +21,7 @@
                             @endphp
                             <div
                                 class="d-flex justify-content-between align-items-center mx-lg-2 px-lg-5 mx-2 my-lg-3 my-3">
-                                <a href="{{ route('front.edit', $akun->slug) }}">
+                                <a href="{{ Auth::user()->roles == 'member' ? route('front.edit', $akun->slug) : route('edit_kurir', $akun->slug) }}">
                                     @if ($akun->gambar != null)
                                         <img src="{{ asset(Str::replace($baseURL . '/images/', '',  '/images/' . $akun->gambar)) }}" class="rounded-circle"
                                             alt="">
