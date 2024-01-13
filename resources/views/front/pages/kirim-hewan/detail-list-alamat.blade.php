@@ -91,8 +91,8 @@
                                     </div>
                                 @enderror
                             </div>
-                            <input id="search-box" type="text" placeholder="Cari alamat atau lokasi">
-                            <div id="map" class="mb-3"></div>
+                            {{-- <input id="search-box" type="text" placeholder="Cari alamat atau lokasi">
+                            <div id="map" class="mb-3"></div> --}}
 
                             <div class="mb-3">
                                 <label for="catatan_driver" class="form-label">Catatan untuk driver(opsional)</label>
@@ -133,7 +133,7 @@
 
 @endsection
 
-@push('script')
+{{-- @push('script')
 
 <script>
     var currentMarker;
@@ -211,4 +211,4 @@
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap">
 </script>
-@endpush
+@endpush --}}
