@@ -35,7 +35,7 @@ class KirimHewan extends Model
 
     public function users()
     {
-        return $this->belongsTo(User::class,'id','id_user');
+    return $this->belongsTo(User::class,'id','id_user');
     }
 
     public function kurir()

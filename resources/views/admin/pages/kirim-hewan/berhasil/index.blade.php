@@ -35,23 +35,28 @@
                                 <td>{{ $item->nama_pengirim }}</td>
                                 <td>{{ $item->tanggal }}</td>
                                 <td>
-                                    @if ($item->status_pembayaran == "true" )
-                                    <div class="btn btn-success btn-sm">
-                                        <p class="my-1 mx-3 text-white"><b>Berhasil</b></p>
-                                    </div>
+                                    @if ($item->status_pembayaran  == 'true' && $item->status_pengiriman == 'true')
+                                        <div class="btn btn-success btn-sm">
+                                            <p class="my-1 mx-3 text-white"><b>Berhasil</b></p>
+                                        </div>
                                     @else
-                                    <div class="btn btn-warning btn-sm">
-                                        <p class="my-1 mx-3 text-white"><b>Proses</b></p>
-                                    </div>
+                                        <div class="btn btn-warning btn-sm">
+                                            <p class="my-1 mx-3 text-white"><b>Proses</b></p>
+                                        </div>
                                     @endif
 
                                 </td>
                                 <td>
+                                    <button class="btn btn-info btn-sm" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#show-modal-{{ $item->id }}"><span><i
+                                                class="bx bx-trash me-sm-2"></i> <span
+                                                class="d-none d-sm-inline-block">Show</span></span>
+                                    </button>
                                     <button class="btn btn-danger btn-sm" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#delete-modal-{{ $item->id }}"><span><i
-                                            class="bx bx-trash me-sm-2"></i> <span
-                                            class="d-none d-sm-inline-block">Hapus</span></span>
-                                </button>
+                                        data-bs-target="#delete-modal-{{ $item->id }}"><span><i
+                                                class="bx bx-trash me-sm-2"></i> <span
+                                                class="d-none d-sm-inline-block">Hapus</span></span>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach

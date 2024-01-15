@@ -17,7 +17,6 @@ class BackKirimHewanController extends Controller
         return view('admin.pages.kirim-hewan.berhasil.index', ['kirim_hewan' => $kirim_hewan]);
     }
 
-
     public function destroy($id)
     {
         $kirim_hewan = KirimHewan::where('id',$id)->first();
