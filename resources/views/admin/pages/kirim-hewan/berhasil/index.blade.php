@@ -48,8 +48,7 @@
                                 </td>
                                 <td>
                                     <button class="btn btn-info btn-sm" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#show-modal-{{ $item->id }}"><span><i
-                                                class="bx bx-trash me-sm-2"></i> <span
+                                        data-bs-target="#show-modal-{{ $item->id }}"><span><i class='bx bxs-show me-sm-2'></i> <span
                                                 class="d-none d-sm-inline-block">Show</span></span>
                                     </button>
                                     <button class="btn btn-danger btn-sm" type="button" data-bs-toggle="modal"
