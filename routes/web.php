@@ -99,7 +99,7 @@ Route::prefix('admin')->middleware(['auth','OnlyAdmin'])->group(function () {
     Route::prefix('kirim-hewan')->group(function(){
         // konfirmasi pembayaran
         Route::resource('konfirmasi-pembayaran',KonfirmasiPembayaranController::class)->except(['create','store','edit','show']);
-        Route::resource('berhasil',BackKirimHewanController::class)->except(['create','store','edit','show']);
+        Route::resource('berhasil',BackKirimHewanController::class)->except(['create','store','edit']);
     });
     ##end kirim hewan##
 

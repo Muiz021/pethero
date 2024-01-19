@@ -47,10 +47,12 @@
 
                                 </td>
                                 <td>
-                                    <button class="btn btn-info btn-sm" type="button" data-bs-toggle="modal"
+                                    {{-- <button class="btn btn-info btn-sm" type="button" data-bs-toggle="modal"
                                         data-bs-target="#show-modal-{{ $item->id }}"><span><i class='bx bxs-show me-sm-2'></i> <span
                                                 class="d-none d-sm-inline-block">Show</span></span>
-                                    </button>
+                                    </button> --}}
+                                    <a href="{{route('berhasil.show',$item->id)}}" class="btn btn-info btn-sm"><span><i class='bx bxs-show me-sm-2'></i> <span
+                                        class="d-none d-sm-inline-block">Show</span></span></a>
                                     <button class="btn btn-danger btn-sm" type="button" data-bs-toggle="modal"
                                         data-bs-target="#delete-modal-{{ $item->id }}"><span><i
                                                 class="bx bx-trash me-sm-2"></i> <span
@@ -63,9 +65,9 @@
                 </table>
             </div>
         </div>
-        @include('admin.pages.kirim-hewan.berhasil.modal')
     </div>
 </div>
+@include('admin.pages.kirim-hewan.berhasil.modal')
 @endsection
 
 @push('script')

@@ -1,5 +1,5 @@
     @foreach ($kirim_hewan as $data)
-        @isset($data->id)
+
             <!-- Modal Edit-->
             <div class="modal fade" id="edit-modal-{{ $data->id }}" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -37,5 +37,5 @@
                     </div>
                 </div>
             </div>
-        @endisset
+       
     @endforeach
